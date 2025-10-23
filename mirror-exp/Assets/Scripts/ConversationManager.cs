@@ -93,6 +93,11 @@ public class ConversationManager : MonoBehaviour
 
         conversation = conversation.OrderBy(c => c.Line).ToList();
         Debug.Log($"Total lines loaded for {participant}: {conversation.Count}");
+
+        for (int i = 0; i < conversation.Count; i++)
+        {
+            Debug.Log("audio file name is: " +  conversation[i].AudioFile);
+        }
     }
 
 IEnumerator RunConversation()
