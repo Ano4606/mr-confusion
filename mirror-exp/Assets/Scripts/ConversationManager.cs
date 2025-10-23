@@ -30,7 +30,7 @@ public class ConversationManager : MonoBehaviour
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
-    void Start()
+    public void StartTask()
     {
         LoadConversation(Participant);
         PreloadAudioClips();
@@ -43,7 +43,7 @@ public class ConversationManager : MonoBehaviour
 
     void PreloadAudioClips()
     {
-        AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("conversation-audio");
         foreach (var clip in clips)
             clipCache[clip.name] = clip;
 
