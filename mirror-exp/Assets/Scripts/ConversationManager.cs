@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System.IO;
 using System.Linq;
+using UnityEngine;
+using TMPro;
+
 
 public class ConversationManager : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class ConversationManager : MonoBehaviour
     public TextMeshProUGUI lineText;
 
     [Header("Settings")]
-    public float lineDuration = 3f;       // Duration per line
+    public float lineDuration = 50f;       // Duration per line
     public string Participant = "P01";    // Can set via UI
 
     [Header("Audio")]
@@ -93,46 +95,75 @@ public class ConversationManager : MonoBehaviour
         Debug.Log($"Total lines loaded for {participant}: {conversation.Count}");
     }
 
-    IEnumerator RunConversation()
+IEnumerator RunConversation()
+{
+    foreach (var line in conversation)
     {
-        foreach (var line in conversation)
+        AudioSource sourceToUse = null;
+        string displayText = "";
+
+        // Determine speaker
+if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
+{
+    sourceToUse = AudioInterlocutor;
+    displayText = "...";
+}
+else if (line.Speaker.Equals("A", StringComparison.OrdinalIgnoreCase))
+{
+    sourceToUse = AudioAvatar;
+    displayText = "...";
+}
+else
+{
+    sourceToUse = null;
+    displayText = $"{line.Speaker}: {line.Word}";
+}
+
+lineText.text = displayText;
+
+float waitTime = 0f;
+
+// Play audio if available
+if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
+{
+    string clipKey = line.AudioFile.Trim();               // Trim whitespace
+    clipKey = Path.GetFileNameWithoutExtension(clipKey);  // Remove extension if present
+
+    // Case-insensitive search in clip cache
+    AudioClip clip = null;
+    foreach (var kvp in clipCache)
+    {
+        if (kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase))
         {
-            string displayText;
-
-            // Decide which AudioSource to use
-            AudioSource sourceToUse = null;
-
-            if (line.Speaker.Equals("I", System.StringComparison.OrdinalIgnoreCase))
-            {
-                displayText = "..."; // Or whatever you want for this speaker
-                sourceToUse = AudioInterlocutor;
-            }
-            else if (line.Speaker.Equals("A", System.StringComparison.OrdinalIgnoreCase))
-            {
-                displayText = "...";
-                sourceToUse = AudioAvatar;
-            }
-            else
-            {
-                displayText = $"{line.Speaker}: {line.Word}";
-            }
-
-            lineText.text = displayText;
-
-            // Play the audio if available
-            if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile))
-            {
-                if (clipCache.TryGetValue(Path.GetFileNameWithoutExtension(line.AudioFile), out AudioClip clip))
-                {
-                    sourceToUse.PlayOneShot(clip);
-                }
-            }
-
-            yield return new WaitForSeconds(lineDuration);
+            clip = kvp.Value;
+            break;
         }
-
-        lineText.text = "Conversation finished!";
-        Debug.Log("Conversation complete!");
     }
+
+    if (clip != null)
+    {
+        sourceToUse.clip = clip;
+        sourceToUse.Stop();  // Ensure previous audio stops
+        sourceToUse.Play();
+        waitTime = clip.length;
+    }
+    else
+    {
+        Debug.LogWarning($"[ConversationManager] Audio clip not found: '{line.AudioFile}' for line {line.Line}");
+    }
+}
+
+// If no audio, wait a fixed duration (or dynamically based on text)
+if (waitTime <= 0f)
+    waitTime = Mathf.Max(2f, line.Word.Length * 0.2f); // Dynamic wait time based on text length
+
+yield return new WaitForSeconds(waitTime);
+
+    }
+
+    lineText.text = "Conversation terminée !";
+    Debug.Log("Conversation complète !");
+}
+
 
 }
