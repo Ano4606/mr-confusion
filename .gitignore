@@ -106,7 +106,7 @@ Thumbs.db
 *.fon
 
 # Models
-*.fbx
+#*.fbx
 *.obj
 *.dae
 *.3ds
