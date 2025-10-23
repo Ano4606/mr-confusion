@@ -108,67 +108,106 @@ IEnumerator RunConversation()
         string displayText = "";
 
         // Determine speaker
-if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
-{
-    sourceToUse = AudioInterlocutor;
-    displayText = "...";
-}
-else if (line.Speaker.Equals("A", StringComparison.OrdinalIgnoreCase))
-{
-    sourceToUse = AudioAvatar;
-    displayText = "...";
-}
-else
-{
-    sourceToUse = null;
-    displayText = $"{line.Speaker}: {line.Word}";
-}
-
-lineText.text = displayText;
-
-float waitTime = 0f;
-
-// Play audio if available
-if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
-{
-    string clipKey = line.AudioFile.Trim();               // Trim whitespace
-    clipKey = Path.GetFileNameWithoutExtension(clipKey);  // Remove extension if present
-
-    // Case-insensitive search in clip cache
-    AudioClip clip = null;
-    foreach (var kvp in clipCache)
-    {
-        if (kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase))
+        if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
         {
-            clip = kvp.Value;
-            break;
+            sourceToUse = AudioInterlocutor;
+            displayText = "...";
         }
-    }
+        else if (line.Speaker.Equals("A", StringComparison.OrdinalIgnoreCase))
+        {
+            sourceToUse = AudioAvatar;
+            displayText = "...";
+        }
+        else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+        {
+            // Use microphone input
+            sourceToUse = AudioAvatar;
+            displayText = $"{line.Speaker}: {line.Word}";
+        }
+        else
+        {
+            displayText = $"{line.Speaker}: {line.Word}";
+        }
 
-    if (clip != null)
-    {
-        sourceToUse.clip = clip;
-        sourceToUse.Stop();  // Ensure previous audio stops
-        sourceToUse.Play();
-        waitTime = clip.length;
-    }
-    else
-    {
-        Debug.LogWarning($"[ConversationManager] Audio clip not found: '{line.AudioFile}' for line {line.Line}");
-    }
-}
+        lineText.text = displayText;
 
-// If no audio, wait a fixed duration (or dynamically based on text)
-if (waitTime <= 0f)
-    waitTime = Mathf.Max(2f, line.Word.Length * 0.2f); // Dynamic wait time based on text length
+        float waitTime = 0f;
 
-yield return new WaitForSeconds(waitTime);
+        // --- MICROPHONE MODE for "P" speaker ---
+        if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+        {
+            if (Microphone.devices.Length > 0)
+            {
+                string micName = Microphone.devices[0]; // use first available mic
+                int sampleRate = 44100;
 
+                Debug.Log($"Recording from mic: {micName}");
+
+                // Start recording
+                sourceToUse.clip = Microphone.Start(micName, false, 5, sampleRate);
+
+                // Wait until the microphone starts recording
+                while (!(Microphone.GetPosition(micName) > 0)) { yield return null; }
+
+                sourceToUse.Play(); // playback in real-time
+                Debug.Log("Microphone recording started and playing.");
+
+                // Wait for a few seconds or until line duration
+                yield return new WaitForSeconds(5f);
+
+                Microphone.End(micName);
+                Debug.Log("Microphone recording ended.");
+            }
+            else
+            {
+                Debug.LogWarning("No microphone detected!");
+                yield return new WaitForSeconds(2f);
+            }
+
+            continue; // Skip the normal audio file logic
+        }
+
+        // --- NORMAL AUDIO FILE LOGIC ---
+        if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
+        {
+            string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
+            AudioClip clip = null;
+
+            foreach (var kvp in clipCache)
+            {
+                if (kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase))
+                {
+                    clip = kvp.Value;
+                    break;
+                }
+            }
+
+            if (clip != null)
+            {
+                sourceToUse.clip = clip;
+                sourceToUse.Stop();
+                sourceToUse.Play();
+                waitTime = clip.length;
+            }
+            else
+            {
+                Debug.LogWarning($"Audio clip not found: '{line.AudioFile}'");
+            }
+        }
+
+        if (waitTime <= 0f)
+            waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
+
+        yield return new WaitForSeconds(waitTime);
     }
 
     lineText.text = "Conversation terminée !";
     Debug.Log("Conversation complète !");
 }
+
+
+
+
 
 
 }
