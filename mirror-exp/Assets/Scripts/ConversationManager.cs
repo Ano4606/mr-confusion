@@ -96,106 +96,112 @@ public class ConversationManager : MonoBehaviour
     }
 
     IEnumerator RunConversation()
+{
+    foreach (var line in conversation)
     {
-        foreach (var line in conversation)
+        AudioSource sourceToUse = null;
+        string displayText = "";
+
+        // Determine speaker
+        if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
         {
-            AudioSource sourceToUse = null;
-            string displayText = "";
+            sourceToUse = AudioInterlocutor;
+            displayText = "...";
+        }
+        else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
+        {
+            sourceToUse = AudioAvatar;
+            displayText = "...";
 
-            // Determine speaker
-            if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
-            {
-                sourceToUse = AudioInterlocutor;
-                displayText = "...";
-            }
-            else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
-            {
-                sourceToUse = AudioAvatar;
-                displayText = "...";
+            retargeter.enabled = false;
+            // Force the Animator to play from the Entry state
+            selfAvatarAnimator.Play("Standing", 0, 0f); 
+            selfAvatarAnimator.Update(0f); // Optional: forces immediate update
 
-                // Disable tracking during autonomous speech
-                if (retargeter != null)
-                {
-                    retargeter.enabled = false;
-                    Debug.Log("CharacterRetargeter disabled for SA speaking.");
-                }
+        }
+        else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+        {
+            sourceToUse = AudioAvatar;
+            displayText = $"{line.Speaker}: {line.Word}";
 
-                // Play Mixamo speaking animation
-                if (selfAvatarAnimator != null)
-                    selfAvatarAnimator.SetTrigger("Speak");
-            }
-            else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+        }
+        else
+        {
+            displayText = $"{line.Speaker}: {line.Word}";
+        }
+
+        lineText.text = displayText;
+        float waitTime = 0f;
+
+        // --- MICROPHONE MODE ---
+        if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+        {
+            if (Microphone.devices.Length > 0)
             {
-                sourceToUse = AudioAvatar;
-                displayText = $"{line.Speaker}: {line.Word}";
+                string micName = Microphone.devices[0];
+                int sampleRate = 44100;
+
+                AudioClip micClip = Microphone.Start(micName, true, 5, sampleRate);
+                sourceToUse.clip = micClip;
+
+                while (!(Microphone.GetPosition(micName) > 0))
+                    yield return null;
+
+                sourceToUse.Play(); // realtime monitoring
+
+                // Wait for the duration of the line
+                yield return new WaitForSeconds(Mathf.Min(5f, line.Word.Length * 0.2f));
+
+                Microphone.End(micName);
+                sourceToUse.loop = false;
             }
             else
             {
-                displayText = $"{line.Speaker}: {line.Word}";
+                Debug.LogWarning("No microphone detected!");
+                yield return new WaitForSeconds(2f);
+            }
+            continue;
+        }
+
+        // --- NORMAL AUDIO FILE LOGIC (SA / I / others) ---
+        if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
+        {
+            string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
+            if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
+            {
+                // fallback case-insensitive search
+                clip = clipCache.FirstOrDefault(kvp => kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase)).Value;
             }
 
-            lineText.text = displayText;
-            float waitTime = 0f;
-
-            // --- MICROPHONE MODE for "P" speaker ---
-            if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+            if (clip != null)
             {
-                if (Microphone.devices.Length > 0)
-                {
-                    string micName = Microphone.devices[0];
-                    int sampleRate = 44100;
-
-                    sourceToUse.clip = Microphone.Start(micName, false, 5, sampleRate);
-                    while (!(Microphone.GetPosition(micName) > 0)) { yield return null; }
-
-                    sourceToUse.Play();
-                    yield return new WaitForSeconds(5f);
-                    Microphone.End(micName);
-                }
-                else
-                {
-                    Debug.LogWarning("No microphone detected!");
-                    yield return new WaitForSeconds(2f);
-                }
-                continue;
+                sourceToUse.clip = clip;
+                sourceToUse.Stop();
+                sourceToUse.Play();
+                waitTime = clip.length;
             }
-
-            // --- NORMAL AUDIO FILE LOGIC ---
-            if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
+            else
             {
-                string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
-                if (clipCache.TryGetValue(clipKey, out AudioClip clip))
-                {
-                    sourceToUse.clip = clip;
-                    sourceToUse.Stop();
-                    sourceToUse.Play();
-                    waitTime = clip.length;
-                }
-                else
-                {
-                    Debug.LogWarning($"Audio clip not found: '{line.AudioFile}'");
-                }
-            }
-
-            if (waitTime <= 0f)
-                waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
-
-            yield return new WaitForSeconds(waitTime);
-
-            // Re-enable tracking after SA finishes speaking
-            if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
-            {
-                if (retargeter != null)
-                {
-                    retargeter.enabled = true;
-                    Debug.Log("CharacterRetargeter re-enabled for SA.");
-                }
+                Debug.LogWarning($"Audio clip not found: '{line.AudioFile}'");
             }
         }
 
-        lineText.text = "Conversation terminée !";
-        Debug.Log("Conversation complete!");
+        if (waitTime <= 0f)
+            waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
+
+        yield return new WaitForSeconds(waitTime);
+
+        // Re-enable retargeter after SA finishes
+        if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase) && retargeter != null)
+        {
+            retargeter.enabled = true;
+        }
     }
+
+    lineText.text = "Conversation terminée !";
+    Debug.Log("Conversation complete!");
+}
+
 }
 
 
