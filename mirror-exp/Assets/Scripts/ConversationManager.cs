@@ -36,8 +36,13 @@ public class ConversationManager : MonoBehaviour
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
+    public OVRLipSyncContext avatarLipsync; //OVRLipSynccontext inside the avatar
     public void StartTask()
     {
+        if(avatarLipsync == null){
+            avatarLipsync = this.GetComponent<OVRLipSyncContext>();
+        }
+
         LoadConversation(Participant);
         PreloadAudioClips();
 
@@ -117,12 +122,15 @@ public class ConversationManager : MonoBehaviour
             // Force the Animator to play from the Entry state
             selfAvatarAnimator.Play("Standing", 0, 0f); 
             selfAvatarAnimator.Update(0f); // Optional: forces immediate update
+            avatarLipsync.audioLoopback = false;
+
 
         }
         else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
         {
             sourceToUse = AudioAvatar;
             displayText = $"{line.Speaker}: {line.Word}";
+            avatarLipsync.audioLoopback = true;
 
         }
         else

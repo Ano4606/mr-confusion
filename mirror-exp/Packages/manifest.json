@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.avatarsdk.metaperson.loader": "https://github.com/avatarsdk/metaperson-loader-unity.git",
     "com.meta.xr.sdk.all": "72.0.0",
     "com.meta.xr.sdk.movement": "https://github.com/oculus-samples/Unity-Movement.git",
     "com.quickvr.quickbase": "https://gitlab.com/eventlabprojects/quickvr.packages/com.quickvr.quickbase.git",
