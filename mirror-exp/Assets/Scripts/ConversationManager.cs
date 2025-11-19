@@ -37,6 +37,22 @@ public class ConversationManager : MonoBehaviour
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
     public OVRLipSyncContext avatarLipsync; //OVRLipSynccontext inside the avatar
+    public void BindToAvatar(GameObject avatar)
+    {
+    AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
+
+            if (bindings == null)
+            {
+                Debug.LogError("Avatar does not have AvatarBindings component!");
+                return;
+            }
+
+    selfAvatarAnimator = bindings.animator;
+    retargeter = bindings.retargeter;
+    avatarLipsync = bindings.lipSync;
+    AudioAvatar = bindings.voiceSource;
+    
+    }
     public void StartTask()
     {
         if(avatarLipsync == null){
@@ -52,6 +68,8 @@ public class ConversationManager : MonoBehaviour
             lineText.text = "No conversation lines found!";
     }
 
+
+
     void PreloadAudioClips()
     {
         AudioClip[] clips = Resources.LoadAll<AudioClip>("conversation-audio");
@@ -63,7 +81,7 @@ public class ConversationManager : MonoBehaviour
 
     void LoadConversation(string participant)
     {
-        TextAsset csvFile = Resources.Load<TextAsset>("rando");
+        TextAsset csvFile = Resources.Load<TextAsset>("rando_balanced");
         if (csvFile == null)
         {
             Debug.LogError("CSV file not found in Resources!");
