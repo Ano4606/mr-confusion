@@ -14,6 +14,8 @@ public class AvatarManager : MonoBehaviour
 
     private Dictionary<string, GameObject> participantLookup;
     private Dictionary<string, GameObject> interlocutorLookup;
+    public DynamicEyeBlinker blinker;
+
 
     void Awake()
     {
@@ -61,6 +63,10 @@ public class AvatarManager : MonoBehaviour
         {
             Debug.LogError("Interlocutor not found: " + interlocutorName);
         }
+
+        if (blinker != null)
+            blinker.SetActiveAvatars(ActiveParticipantAvatar, ActiveInterlocutorAvatar);
+
     }
 
     private string ChooseInterlocutor(string p)
@@ -80,11 +86,11 @@ public class AvatarManager : MonoBehaviour
         return "";
     }
 
-    private void ApplyUniqueMaterials(GameObject avatar)
-    {
-        Renderer[] renderers = avatar.GetComponentsInChildren<Renderer>();
+    // private void ApplyUniqueMaterials(GameObject avatar)
+    // {
+    //     Renderer[] renderers = avatar.GetComponentsInChildren<Renderer>();
 
-        foreach (Renderer r in renderers)
-            r.material = new Material(r.material);
-    }
+    //     foreach (Renderer r in renderers)
+    //         r.material = new Material(r.material);
+    // }
 }
