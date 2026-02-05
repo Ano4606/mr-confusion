@@ -137,20 +137,25 @@ public class ConversationManager : MonoBehaviour
             sourceToUse = AudioAvatar;
             displayText = "...";
 
-            retargeter.enabled = false;
-            // Force the Animator to play from the Entry state
-            selfAvatarAnimator.Play("Standing", 0, 0f); 
-            selfAvatarAnimator.Update(0f); // Optional: forces immediate update
-            avatarLipsync.audioLoopback = false;
-
-
+            if (retargeter != null)
+                retargeter.enabled = false;
+            
+            if (selfAvatarAnimator != null)
+            {
+                selfAvatarAnimator.Play("Standing", 0, 0f); 
+                selfAvatarAnimator.Update(0f);
+            }
+            
+            if (avatarLipsync != null)
+                avatarLipsync.audioLoopback = false;
         }
         else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
         {
             sourceToUse = AudioAvatar;
             displayText = $"{line.Speaker}: {line.Word}";
-            avatarLipsync.audioLoopback = true;
-
+            
+            if (avatarLipsync != null)
+                avatarLipsync.audioLoopback = true;
         }
         else
         {
@@ -163,7 +168,7 @@ public class ConversationManager : MonoBehaviour
         // --- MICROPHONE MODE ---
         if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
         {
-            if (Microphone.devices.Length > 0)
+            if (sourceToUse != null && Microphone.devices.Length > 0)
             {
                 string micName = Microphone.devices[0];
                 int sampleRate = 44100;
@@ -184,7 +189,7 @@ public class ConversationManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("No microphone detected!");
+                Debug.LogWarning("No microphone detected or AudioSource is null!");
                 yield return new WaitForSeconds(2f);
             }
             continue;

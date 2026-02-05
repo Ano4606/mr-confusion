@@ -1,111 +1,92 @@
 using UnityEngine;
 
-public class ExperimentManager : MonoBehaviour
-{
-    public ChoosePhaseAvatarManager choosePhase;
-    public EmbodimentManager embodimentPhase;
-    public ConversationManager conversationPhase;
-
-    public AvatarManager avatarManager;
-
-    public GameObject mirror;
-
-    private void Start()
+    public class ExperimentManager : MonoBehaviour
     {
-        // Subscribe to phase events
-        choosePhase.OnAvatarChosen += HandleAvatarChosen;
-        embodimentPhase.OnEmbodimentFinished += HandleEmbodimentFinished;
+        [Header("Phase Managers")]
+        public ChoosePhaseAvatarManager choosePhase;
+        public EmbodimentManager embodimentPhase;
+        public ConversationManager conversationPhase;
 
-        // Start the first phase
-        choosePhase.Show();
-    }
-
-    private void HandleAvatarChosen(string avatarName)
-    {
-    Debug.Log("Avatar chosen: " + avatarName);
-
-    // Activate participant + interlocutor avatars
-    avatarManager.SelectParticipant(avatarName);
-
-    // Bind conversation to the active participant avatar
-    conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
-
-    // Show mirror & start embodiment
-    mirror.SetActive(true);
-    embodimentPhase.gameObject.SetActive(true);
-    embodimentPhase.PlayInstruction();
-    }
-
-
-    // private void HandleAvatarChosen(string avatarName)
-    // {
-    //     mirror.SetActive(true);
-
-    //     // Start embodiment training
-    //     embodimentPhase.gameObject.SetActive(true);
-    //     embodimentPhase.PlayInstruction();
-    // }
-
-    private void HandleEmbodimentFinished()
-    {
-        embodimentPhase.gameObject.SetActive(false);
-
-        // Start Conversation
-        conversationPhase.gameObject.SetActive(true);
-        conversationPhase.StartTask();
-    }
-}
-
-
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class ExperimentManager : MonoBehaviour
-// {
-//     public GameObject ConversationPhase;
-//     public GameObject EmbodiementPhase;
-//     public GameObject ChoosePhase;
-
-//     public ChoosingAvatarPhaseManager choosingAvatarPhaseManager;
-
-//     public EmbodimentManager embodimentmanager;
-
-//     public ConversationManager conversationManager;
-//    public GameObject mirror;
-
-
-// public void Start()
-//     {
+        [Header("Global References")]
+        public AvatarManager avatarManager;
+        public GameObject mirror;
         
-//     choosingAvatarPhaseManager.StartChoosing();
+        public TMPro.TextMeshProUGUI debugText;
 
-//     }
+        private void Awake()
+        {
+            // Subscribe here to ensure we don't miss the event
+            if (choosePhase != null)
+            {
+                choosePhase.OnAvatarChosen += HandleAvatarChosen;
+            }
+        
+            if (embodimentPhase != null)
+            {
+                embodimentPhase.OnEmbodimentFinished += HandleEmbodimentFinished;
+            }
+        }
 
-//     public void BeginExperiment()
-//     {
-//         StartTraining();
-//     }
+        private void OnDestroy()
+        {
+            // Unsubscribe to prevent memory leaks
+            if (choosePhase != null)
+            {
+                choosePhase.OnAvatarChosen -= HandleAvatarChosen;
+            }
+        
+            if (embodimentPhase != null)
+            {
+                embodimentPhase.OnEmbodimentFinished -= HandleEmbodimentFinished;
+            }
+        }
 
-//     void StartTraining()
-//     {
-//         mirror.SetActive(true);
-//         EmbodiementPhase.SetActive(true);
-//         embodimentmanager.PlayInstruction();
-//         ConversationPhase.SetActive(false);
-//     }
+        private void Start()
+        {
+            // Start the first phase
+            if (choosePhase != null)
+            {
+                choosePhase.Show();
+            }
+        }
 
-//     public void EndTrainingAndStartTrials()
-//     {
-//         EmbodiementPhase.SetActive(false);
-//         StartCoroutine(WaitAndStartTask());
-//     }
+        private void HandleAvatarChosen(string avatarName)
+        {
+            if (debugText != null) debugText.text = "Step 1: Event Received for " + avatarName;
 
-//     private IEnumerator WaitAndStartTask()
-//     {
-//         yield return new WaitForSeconds(2f);
-//         ConversationPhase.SetActive(true);
-//         conversationManager.StartTask(); 
-//     }
-// }
+            if (avatarManager != null)
+            {
+                avatarManager.SelectParticipant(avatarName);
+                if (debugText != null) debugText.text = "Step 2: Avatar Manager Done";
+        
+                if (conversationPhase != null)
+                {
+                    conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+                    if (debugText != null) debugText.text = "Step 3: Conversation Bound";
+                }
+            }
+
+            if (mirror != null) mirror.SetActive(true);
+    
+            if (embodimentPhase != null)
+            {
+                if (debugText != null) debugText.text = "Step 4: Starting Embodiment";
+                embodimentPhase.gameObject.SetActive(true);
+                embodimentPhase.PlayInstruction();
+            }
+        }
+
+        private void HandleEmbodimentFinished()
+        {
+            if (embodimentPhase != null) embodimentPhase.gameObject.SetActive(false);
+
+            // Start Conversation
+            if (conversationPhase != null)
+            {
+                conversationPhase.gameObject.SetActive(true);
+                conversationPhase.StartTask();
+            }
+        }
+    }
+
 

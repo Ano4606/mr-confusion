@@ -102,7 +102,11 @@ public class EyeBlinkerTwoAvatarsAsync : MonoBehaviour
 
         if (avatar.leftHead   >= 0) avatar.avatarHead.SetBlendShapeWeight(avatar.leftHead, weight);
         if (avatar.rightHead  >= 0) avatar.avatarHead.SetBlendShapeWeight(avatar.rightHead, weight);
-        if (avatar.leftLashes >= 0) avatar.avatarEyelashes.SetBlendShapeWeight(avatar.leftLashes, weight);
-        if (avatar.rightLashes>= 0) avatar.avatarEyelashes.SetBlendShapeWeight(avatar.rightLashes, weight);
+        
+        if (avatar.avatarEyelashes != null)
+        {
+            if (avatar.leftLashes >= 0) avatar.avatarEyelashes.SetBlendShapeWeight(avatar.leftLashes, weight);
+            if (avatar.rightLashes>= 0) avatar.avatarEyelashes.SetBlendShapeWeight(avatar.rightLashes, weight);
+        }
     }
 }

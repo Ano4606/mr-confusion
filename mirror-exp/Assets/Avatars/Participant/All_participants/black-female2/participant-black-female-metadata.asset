@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d1e02490929e41b903b049fc91c34, type: 3}
+  m_Name: participant-black-female-metadata
+  m_EditorClassIdentifier: 
+  _model: {fileID: 6048577591333203584, guid: f6b11c721d93c4f82b1a56be85e37438, type: 3}
+  _configJson: {fileID: 4900000, guid: c7d196d3d4aaf49ccbcb8262883deef7, type: 3}

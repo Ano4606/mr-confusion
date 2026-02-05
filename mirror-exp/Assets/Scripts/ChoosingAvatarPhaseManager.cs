@@ -37,6 +37,13 @@ public class ChoosePhaseAvatarManager : MonoBehaviour
     private void SelectAvatar(int index)
     {
         if (hasChosen) return;
+        
+        if (index < 0 || index >= avatarNames.Length)
+        {
+            Debug.LogError($"Avatar index {index} out of bounds!");
+            return;
+        }
+        
         hasChosen = true;
 
         string avatarName = avatarNames[index];
@@ -44,6 +51,7 @@ public class ChoosePhaseAvatarManager : MonoBehaviour
 
         panel.SetActive(false);
         handsMenu.SetActive(false);
+		mirror.SetActive(true);
     }
 }
 
