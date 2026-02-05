@@ -43,6 +43,16 @@ using UnityEngine;
 
         private void Start()
         {
+            // Hide all phases except choosing at startup
+            if (mirror != null)
+                mirror.SetActive(false);
+            
+            if (embodimentPhase != null)
+                embodimentPhase.gameObject.SetActive(false);
+            
+            if (conversationPhase != null)
+                conversationPhase.gameObject.SetActive(false);
+
             // Start the first phase
             if (choosePhase != null)
             {

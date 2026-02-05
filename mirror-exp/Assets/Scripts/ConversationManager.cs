@@ -138,7 +138,7 @@ public class ConversationManager : MonoBehaviour
             displayText = "...";
 
             if (retargeter != null)
-                retargeter.enabled = false;
+                retargeter.enabled = true;
             
             if (selfAvatarAnimator != null)
             {
