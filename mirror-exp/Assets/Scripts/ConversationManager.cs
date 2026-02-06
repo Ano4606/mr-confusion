@@ -155,7 +155,7 @@ public class ConversationManager : MonoBehaviour
             displayText = $"{line.Speaker}: {line.Word}";
             
             if (avatarLipsync != null)
-                avatarLipsync.audioLoopback = true;
+                avatarLipsync.audioLoopback = false;
         }
         else
         {
