@@ -3,6 +3,7 @@ using UnityEngine;
     public class ExperimentManager : MonoBehaviour
     {
         [Header("Phase Managers")]
+        public ParticipantIDManager participantIDManager;
         public ChoosePhaseAvatarManager choosePhase;
         public EmbodimentManager embodimentPhase;
         public ConversationManager conversationPhase;
@@ -15,6 +16,12 @@ using UnityEngine;
 
         private void Awake()
         {
+            // Subscribe to participant ID manager
+            if (participantIDManager != null)
+            {
+                participantIDManager.OnParticipantIDConfirmed += HandleParticipantIDConfirmed;
+            }
+            
             // Subscribe here to ensure we don't miss the event
             if (choosePhase != null)
             {
@@ -30,6 +37,11 @@ using UnityEngine;
         private void OnDestroy()
         {
             // Unsubscribe to prevent memory leaks
+            if (participantIDManager != null)
+            {
+                participantIDManager.OnParticipantIDConfirmed -= HandleParticipantIDConfirmed;
+            }
+            
             if (choosePhase != null)
             {
                 choosePhase.OnAvatarChosen -= HandleAvatarChosen;
@@ -53,7 +65,8 @@ using UnityEngine;
             if (conversationPhase != null)
                 conversationPhase.gameObject.SetActive(false);
 
-            // Start the first phase
+            // Start the avatar selection phase
+            // ParticipantIDManager will auto-confirm its inspector settings
             if (choosePhase != null)
             {
                 choosePhase.Show();
@@ -72,6 +85,16 @@ using UnityEngine;
                 if (conversationPhase != null)
                 {
                     conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+                    
+                    // Set gender and group for conversation audio
+                    if (participantIDManager != null)
+                    {
+                        conversationPhase.SetGenderAndGroup(
+                            avatarManager.SelectedGender, 
+                            participantIDManager.GroupNumber
+                        );
+                    }
+                    
                     if (debugText != null) debugText.text = "Step 3: Conversation Bound";
                 }
             }
@@ -84,6 +107,12 @@ using UnityEngine;
                 embodimentPhase.gameObject.SetActive(true);
                 embodimentPhase.PlayInstruction();
             }
+        }
+
+        private void HandleParticipantIDConfirmed(string participantID, int groupNumber)
+        {
+            Debug.Log($"ExperimentManager: Using Participant ID '{participantID}' with Group {groupNumber}");
+            // Settings are already confirmed, no additional action needed
         }
 
         private void HandleEmbodimentFinished()

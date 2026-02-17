@@ -27,6 +27,10 @@ public class ConversationManager : MonoBehaviour
     [Header("Settings")]
     public float lineDuration = 50f;
     public string Participant = "P01";
+    
+    [Header("Gender & Group")]
+    private string participantGender; // "female" or "male"
+    private int groupNumber; // 1, 2, or 3
 
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
@@ -56,6 +60,13 @@ public class ConversationManager : MonoBehaviour
     AudioAvatar = bindings.voiceSource;
     
     }
+    public void SetGenderAndGroup(string gender, int group)
+    {
+        participantGender = gender.ToLower();
+        groupNumber = group;
+        Debug.Log($"ConversationManager: Gender set to {participantGender}, Group set to {groupNumber}");
+    }
+
     public void StartTask()
     {
         if(avatarLipsync == null){
@@ -73,16 +84,29 @@ public class ConversationManager : MonoBehaviour
 
     void PreloadAudioClips()
     {
-        AudioClip[] clips = Resources.LoadAll<AudioClip>("conversation-audio");
+        // Determine the correct audio path based on gender and group
+        string audioPath = $"conversation-audio/{participantGender}-participant/Group{groupNumber}";
+
+        Debug.Log($"Loading audio clips from: {audioPath}");
+
+        AudioClip[] clips = Resources.LoadAll<AudioClip>(audioPath);
+
+        if (clips.Length == 0)
+        {
+            Debug.LogWarning($"No audio clips found at path: {audioPath}. Falling back to default.");
+            clips = Resources.LoadAll<AudioClip>("conversation-audio");
+        }
+
         foreach (var clip in clips)
             clipCache[clip.name] = clip;
 
-        Debug.Log($"Preloaded {clipCache.Count} audio clips.");
+        Debug.Log($"Preloaded {clipCache.Count} audio clips from {audioPath}.");
     }
+
 
     void LoadConversation(string participant)
     {
-        TextAsset csvFile = Resources.Load<TextAsset>("rando_balanced");
+        TextAsset csvFile = Resources.Load<TextAsset>("rando");
         if (csvFile == null)
         {
             Debug.LogError("CSV file not found in Resources!");

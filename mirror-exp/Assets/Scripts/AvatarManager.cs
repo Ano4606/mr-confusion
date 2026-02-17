@@ -11,6 +11,9 @@ public class AvatarManager : MonoBehaviour
 
     [HideInInspector] public GameObject ActiveParticipantAvatar;
     [HideInInspector] public GameObject ActiveInterlocutorAvatar;
+    
+    [HideInInspector] public string SelectedGender; // "female" or "male"
+    [HideInInspector] public string SelectedEthnicity; // "black", "white", "asian"
 
     private Dictionary<string, GameObject> participantLookup;
     private Dictionary<string, GameObject> interlocutorLookup;
@@ -31,6 +34,9 @@ public class AvatarManager : MonoBehaviour
 
     public void SelectParticipant(string participantName)
     {
+        // --- Extract gender and ethnicity from participant name ---
+        ExtractGenderAndEthnicity(participantName);
+
         // --- Activate participant avatar ---
         foreach (var obj in participantObjects)
             obj.SetActive(false);
@@ -69,6 +75,7 @@ public class AvatarManager : MonoBehaviour
 
     }
 
+
     private string ChooseInterlocutor(string p)
     {
         switch (p)
@@ -85,6 +92,28 @@ public class AvatarManager : MonoBehaviour
         Debug.LogWarning("No interlocutor match for: " + p);
         return "";
     }
+    private void ExtractGenderAndEthnicity(string participantName)
+    {
+        // Expected format: "participant-{ethnicity}-{gender}"
+        // e.g., "participant-black-female", "participant-white-male"
+
+        string[] parts = participantName.ToLower().Split('-');
+
+        if (parts.Length >= 3)
+        {
+            SelectedEthnicity = parts[1]; // black, white, asian
+            SelectedGender = parts[2];     // female, male
+
+            Debug.Log($"Extracted - Gender: {SelectedGender}, Ethnicity: {SelectedEthnicity}");
+        }
+        else
+        {
+            Debug.LogWarning($"Could not parse participant name: {participantName}");
+            SelectedGender = "female"; // default
+            SelectedEthnicity = "unknown";
+        }
+    }
+
 
     // private void ApplyUniqueMaterials(GameObject avatar)
     // {

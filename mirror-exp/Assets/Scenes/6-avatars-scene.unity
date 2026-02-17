@@ -1658,6 +1658,8 @@ MonoBehaviour:
   - {fileID: 1245856378}
   ActiveParticipantAvatar: {fileID: 0}
   ActiveInterlocutorAvatar: {fileID: 0}
+  SelectedGender: 
+  SelectedEthnicity: 
   blinker: {fileID: 615366865}
 --- !u!4 &77169964
 Transform:
@@ -2446,8 +2448,8 @@ MonoBehaviour:
   lineText: {fileID: 0}
   lineDuration: 50
   Participant: P01
-  AudioInterlocutor: {fileID: 0}
-  AudioAvatar: {fileID: 0}
+  AudioInterlocutor: {fileID: 247915727}
+  AudioAvatar: {fileID: 1098076881}
   retargeter: {fileID: 0}
   selfAvatarAnimator: {fileID: 0}
   avatarLipsync: {fileID: 0}
@@ -2697,6 +2699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea8d559785f74d53a51040fc8cdac80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  participantIDManager: {fileID: 1853230909}
   choosePhase: {fileID: 24184948}
   embodimentPhase: {fileID: 1659752432}
   conversationPhase: {fileID: 1646554836}
@@ -15012,7 +15015,7 @@ MonoBehaviour:
   useRecommendedMSAALevel: 1
   _monoscopic: 0
   _sharpenType: 0
-  _enableDynamicResolution: 0
+  _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
   quest2MinDynamicResolutionScale: 1
@@ -25447,6 +25450,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1853230908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853230910}
+  - component: {fileID: 1853230909}
+  m_Layer: 0
+  m_Name: ParticipantIDManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1853230909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853230908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8e9a2b3c4d5e6f7a8b9c0d1e2f3a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  participantID: P01
+  groupNumber: 1
+--- !u!4 &1853230910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853230908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6691343, y: 1.532004, z: -3.412248}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853897190
 GameObject:
   m_ObjectHideFlags: 0
@@ -58768,3 +58817,4 @@ SceneRoots:
   - {fileID: 615366864}
   - {fileID: 670619484}
   - {fileID: 2107264576}
+  - {fileID: 1853230910}
