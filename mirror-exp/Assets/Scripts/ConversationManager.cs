@@ -73,6 +73,19 @@ public class ConversationManager : MonoBehaviour
             avatarLipsync = this.GetComponent<OVRLipSyncContext>();
         }
 
+        // Validate gender and group are set
+        if (string.IsNullOrEmpty(participantGender))
+        {
+            Debug.LogError("ConversationManager: Gender not set! Call SetGenderAndGroup() before StartTask()");
+            participantGender = "female"; // fallback
+        }
+
+        if (groupNumber == 0)
+        {
+            Debug.LogError("ConversationManager: Group number not set! Call SetGenderAndGroup() before StartTask()");
+            groupNumber = 1; // fallback
+        }
+
         LoadConversation(Participant);
         PreloadAudioClips();
 
@@ -82,26 +95,35 @@ public class ConversationManager : MonoBehaviour
             lineText.text = "No conversation lines found!";
     }
 
+
     void PreloadAudioClips()
     {
         // Determine the correct audio path based on gender and group
         string audioPath = $"conversation-audio/{participantGender}-participant/Group{groupNumber}";
 
-        Debug.Log($"Loading audio clips from: {audioPath}");
+        Debug.Log($"[ConversationManager] Loading audio clips from: Resources/{audioPath}");
+        Debug.Log($"[ConversationManager] Gender: {participantGender}, Group: {groupNumber}");
 
         AudioClip[] clips = Resources.LoadAll<AudioClip>(audioPath);
 
+        Debug.Log($"[ConversationManager] Found {clips.Length} clips at path: {audioPath}");
+
         if (clips.Length == 0)
         {
-            Debug.LogWarning($"No audio clips found at path: {audioPath}. Falling back to default.");
+            Debug.LogWarning($"[ConversationManager] No audio clips found at path: {audioPath}. Falling back to default.");
             clips = Resources.LoadAll<AudioClip>("conversation-audio");
+            Debug.Log($"[ConversationManager] Fallback found {clips.Length} clips");
         }
 
         foreach (var clip in clips)
+        {
             clipCache[clip.name] = clip;
+            Debug.Log($"[ConversationManager] Cached audio: {clip.name}");
+        }
 
-        Debug.Log($"Preloaded {clipCache.Count} audio clips from {audioPath}.");
+        Debug.Log($"[ConversationManager] Total preloaded: {clipCache.Count} audio clips");
     }
+
 
 
     void LoadConversation(string participant)
@@ -223,6 +245,8 @@ public class ConversationManager : MonoBehaviour
         if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
         {
             string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
+            Debug.Log($"[Audio] Looking for clip: '{clipKey}' for speaker: {line.Speaker}");
+            
             if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
             {
                 // fallback case-insensitive search
@@ -231,15 +255,32 @@ public class ConversationManager : MonoBehaviour
 
             if (clip != null)
             {
+                Debug.Log($"[Audio] Playing clip: {clip.name} on {sourceToUse.gameObject.name}, Volume: {sourceToUse.volume}, Mute: {sourceToUse.mute}");
                 sourceToUse.clip = clip;
                 sourceToUse.Stop();
                 sourceToUse.Play();
                 waitTime = clip.length;
+                
+                // Check if audio is actually playing
+                if (sourceToUse.isPlaying)
+                {
+                    Debug.Log($"[Audio] ✓ Audio is playing");
+                }
+                else
+                {
+                    Debug.LogWarning($"[Audio] ✗ Audio failed to play!");
+                }
             }
             else
             {
-                Debug.LogWarning($"Audio clip not found: '{line.AudioFile}'");
+                Debug.LogWarning($"[Audio] ✗ Audio clip not found: '{line.AudioFile}' (searched for: '{clipKey}')");
+                Debug.Log($"[Audio] Available clips in cache: {string.Join(", ", clipCache.Keys)}");
             }
+        }
+        else
+        {
+            if (sourceToUse == null)
+                Debug.LogWarning($"[Audio] AudioSource is null for speaker: {line.Speaker}");
         }
 
         if (waitTime <= 0f)

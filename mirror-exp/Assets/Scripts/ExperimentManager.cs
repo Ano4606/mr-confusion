@@ -2,6 +2,16 @@ using UnityEngine;
 
     public class ExperimentManager : MonoBehaviour
     {
+        [Header("Debug Mode")]
+        [Tooltip("Skip avatar selection and use debug avatar directly")]
+        public bool debugMode = false;
+        
+        [Tooltip("Avatar to use in debug mode (e.g., participant-black-female)")]
+        public string debugAvatarName = "participant-black-female";
+        
+        [Tooltip("Skip embodiment phase in debug mode")]
+        public bool skipEmbodiment = true;
+        
         [Header("Phase Managers")]
         public ParticipantIDManager participantIDManager;
         public ChoosePhaseAvatarManager choosePhase;
@@ -65,11 +75,33 @@ using UnityEngine;
             if (conversationPhase != null)
                 conversationPhase.gameObject.SetActive(false);
 
-            // Start the avatar selection phase
-            // ParticipantIDManager will auto-confirm its inspector settings
-            if (choosePhase != null)
+            // DEBUG MODE: Skip avatar selection
+            if (debugMode)
             {
-                choosePhase.Show();
+                Debug.Log($"[DEBUG MODE] Using avatar: {debugAvatarName}");
+                StartDebugMode();
+            }
+            else
+            {
+                // Normal mode: Start the avatar selection phase
+                // ParticipantIDManager will auto-confirm its inspector settings
+                if (choosePhase != null)
+                {
+                    choosePhase.Show();
+                }
+            }
+        }
+
+        private void StartDebugMode()
+        {
+            // Simulate avatar selection
+            HandleAvatarChosen(debugAvatarName);
+            
+            // Skip embodiment if requested
+            if (skipEmbodiment)
+            {
+                Debug.Log("[DEBUG MODE] Skipping embodiment phase");
+                HandleEmbodimentFinished();
             }
         }
 
