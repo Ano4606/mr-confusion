@@ -28,6 +28,13 @@ public class ConversationManager : MonoBehaviour
     public float lineDuration = 50f;
     public string Participant = "P01";
     
+    [Header("Microphone Settings")]
+    [Tooltip("Maximum time for player to speak (in seconds)")]
+    public float playerSpeakingTime = 10f;
+    
+    [Tooltip("Calculate time based on text length (0.2s per character)")]
+    public bool useTextBasedDuration = false;
+    
     [Header("Gender & Group")]
     private string participantGender; // "female" or "male"
     private int groupNumber; // 1, 2, or 3
@@ -115,13 +122,39 @@ public class ConversationManager : MonoBehaviour
             Debug.Log($"[ConversationManager] Fallback found {clips.Length} clips");
         }
 
+        // Count by type
+        int iCount = 0;
+        int saCount = 0;
+        int otherCount = 0;
+
         foreach (var clip in clips)
         {
             clipCache[clip.name] = clip;
-            Debug.Log($"[ConversationManager] Cached audio: {clip.name}");
+            
+            if (clip.name.StartsWith("I_"))
+                iCount++;
+            else if (clip.name.StartsWith("SA_"))
+                saCount++;
+            else
+                otherCount++;
         }
 
-        Debug.Log($"[ConversationManager] Total preloaded: {clipCache.Count} audio clips");
+        Debug.Log($"[ConversationManager] === AUDIO LOADING SUMMARY ===");
+        Debug.Log($"[ConversationManager] Total clips loaded: {clips.Length}");
+        Debug.Log($"[ConversationManager] Interlocutor (I_*): {iCount} clips");
+        Debug.Log($"[ConversationManager] Self-Avatar (SA_*): {saCount} clips");
+        Debug.Log($"[ConversationManager] Other: {otherCount} clips");
+        Debug.Log($"[ConversationManager] Total in cache: {clipCache.Count}");
+        
+        if (saCount == 0 && iCount > 0)
+        {
+            Debug.LogError($"[ConversationManager] ⚠ WARNING: No SA clips loaded but {iCount} I clips found!");
+            Debug.LogError($"[ConversationManager] Self-Avatar audio will NOT play during conversation!");
+        }
+        else if (saCount > 0 && iCount > 0)
+        {
+            Debug.Log($"[ConversationManager] ✓ Both I and SA audio loaded successfully!");
+        }
     }
 
 
@@ -138,14 +171,23 @@ public class ConversationManager : MonoBehaviour
         string[] lines = csvFile.text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
         conversation.Clear();
 
+        Debug.Log($"[CSV] Loading conversation for participant: {participant}");
+
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i].Trim();
             if (string.IsNullOrEmpty(line)) continue;
 
-            string[] values = line.Split(',');
-            if (values.Length < 6) continue;
+            // Parse CSV line properly handling quoted fields with commas
+            string[] values = ParseCSVLine(line);
+            
+            if (values.Length < 6)
+            {
+                Debug.LogWarning($"[CSV] Line {i} has only {values.Length} columns, expected 6. Skipping.");
+                continue;
+            }
 
+            // Clean up quotes from values
             for (int j = 0; j < values.Length; j++)
                 values[j] = values[j].Trim().Trim('"');
 
@@ -159,10 +201,51 @@ public class ConversationManager : MonoBehaviour
                 Word = values[4],
                 AudioFile = values[5]
             });
+            
+            // Debug first few lines to verify parsing
+            if (conversation.Count <= 3)
+            {
+                Debug.Log($"[CSV] Line {lineNumber}: Speaker={values[3]}, Text='{values[4].Substring(0, Mathf.Min(30, values[4].Length))}...', Audio={values[5]}");
+            }
         }
 
         conversation = conversation.OrderBy(c => c.Line).ToList();
-        Debug.Log($"Total lines loaded for {participant}: {conversation.Count}");
+        Debug.Log($"[CSV] Total lines loaded for {participant}: {conversation.Count}");
+    }
+
+    // Properly parse CSV line handling quoted fields with commas
+    private string[] ParseCSVLine(string line)
+    {
+        var result = new System.Collections.Generic.List<string>();
+        bool inQuotes = false;
+        string currentField = "";
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            char c = line[i];
+
+            if (c == '"')
+            {
+                // Toggle quote state
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                // End of field
+                result.Add(currentField);
+                currentField = "";
+            }
+            else
+            {
+                // Add character to current field
+                currentField += c;
+            }
+        }
+
+        // Add the last field
+        result.Add(currentField);
+
+        return result.ToArray();
     }
 
     IEnumerator RunConversation()
@@ -219,19 +302,53 @@ public class ConversationManager : MonoBehaviour
                 string micName = Microphone.devices[0];
                 int sampleRate = 44100;
 
-                AudioClip micClip = Microphone.Start(micName, true, 5, sampleRate);
+                Debug.Log($"[Microphone] Starting recording from: {micName}");
+
+                // Store original volume and mute state
+                float originalVolume = sourceToUse.volume;
+                bool originalMute = sourceToUse.mute;
+
+                // MUTE the AudioSource so you don't hear yourself
+                sourceToUse.mute = true;
+
+                // Calculate recording duration
+                float recordingDuration;
+                if (useTextBasedDuration)
+                {
+                    // Use text length to calculate duration (0.2s per character, max playerSpeakingTime)
+                    recordingDuration = Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f);
+                }
+                else
+                {
+                    // Use fixed duration from Inspector
+                    recordingDuration = playerSpeakingTime;
+                }
+
+                // Start microphone with enough buffer for the recording
+                int recordingLength = Mathf.CeilToInt(recordingDuration) + 1;
+                AudioClip micClip = Microphone.Start(micName, true, recordingLength, sampleRate);
                 sourceToUse.clip = micClip;
 
                 while (!(Microphone.GetPosition(micName) > 0))
                     yield return null;
 
-                sourceToUse.Play(); // realtime monitoring
+                // Play for lip sync (but muted so you don't hear it)
+                sourceToUse.Play();
 
-                // Wait for the duration of the line
-                yield return new WaitForSeconds(Mathf.Min(5f, line.Word.Length * 0.2f));
+                Debug.Log($"[Microphone] Recording for {recordingDuration:F1} seconds (muted)");
+
+                // Wait for the duration
+                yield return new WaitForSeconds(recordingDuration);
 
                 Microphone.End(micName);
+                sourceToUse.Stop();
                 sourceToUse.loop = false;
+
+                // Restore original volume and mute state
+                sourceToUse.volume = originalVolume;
+                sourceToUse.mute = originalMute;
+
+                Debug.Log($"[Microphone] Recording ended");
             }
             else
             {
