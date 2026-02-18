@@ -2448,6 +2448,8 @@ MonoBehaviour:
   lineText: {fileID: 0}
   lineDuration: 50
   Participant: P01
+  playerSpeakingTime: 10
+  useTextBasedDuration: 0
   AudioInterlocutor: {fileID: 247915727}
   AudioAvatar: {fileID: 1098076881}
   retargeter: {fileID: 0}
@@ -2699,6 +2701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea8d559785f74d53a51040fc8cdac80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugMode: 1
+  debugAvatarName: participant-asian-female
+  skipEmbodiment: 1
   participantIDManager: {fileID: 1853230909}
   choosePhase: {fileID: 24184948}
   embodimentPhase: {fileID: 1659752432}
@@ -4503,7 +4508,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.249
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6454,6 +6459,10 @@ PrefabInstance:
     - target: {fileID: 2259869186471512676, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2570616383131558707, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       propertyPath: m_Layer
@@ -12883,6 +12892,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1088973492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1155045707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1155045708}
+  m_Layer: 0
+  m_Name: AudioDebugHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1155045708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155045707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3723992, y: 1.7395662, z: -3.1371803}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159858130
 GameObject:
   m_ObjectHideFlags: 0
@@ -15015,7 +15055,7 @@ MonoBehaviour:
   useRecommendedMSAALevel: 1
   _monoscopic: 0
   _sharpenType: 0
-  _enableDynamicResolution: 1
+  _enableDynamicResolution: 0
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
   quest2MinDynamicResolutionScale: 1
@@ -15709,6 +15749,10 @@ PrefabInstance:
     - target: {fileID: 2259869186471512676, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2570616383131558707, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       propertyPath: m_Layer
@@ -19241,6 +19285,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2570616383131558707, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -20667,6 +20715,8 @@ MonoBehaviour:
   lineText: {fileID: 71081453}
   lineDuration: 50
   Participant: P01
+  playerSpeakingTime: 10
+  useTextBasedDuration: 0
   AudioInterlocutor: {fileID: 247915727}
   AudioAvatar: {fileID: 1098076881}
   retargeter: {fileID: 0}
@@ -21380,6 +21430,10 @@ PrefabInstance:
     - target: {fileID: 2259869186471512676, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2570616383131558707, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       propertyPath: m_Layer
@@ -24545,6 +24599,10 @@ PrefabInstance:
     - target: {fileID: 2259869186471512676, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2570616383131558707, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       propertyPath: m_Layer
@@ -34269,7 +34327,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 7588394112316323212}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -58818,3 +58876,4 @@ SceneRoots:
   - {fileID: 670619484}
   - {fileID: 2107264576}
   - {fileID: 1853230910}
+  - {fileID: 1155045708}
