@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using TMPro;
-using Meta.XR.Movement.Retargeting; // Correct namespace for CharacterRetargeter
+using Meta.XR.Movement.Retargeting;
 
 public class ConversationManager : MonoBehaviour
 {
@@ -15,11 +15,10 @@ public class ConversationManager : MonoBehaviour
         public int Line;
         public string Speaker;
         public string Word;
-        public string AudioFile; // Name of audio clip without extension
+        public string AudioFile;
     }
-// added
-    public event Action OnConversationFinished;
 
+    public event Action OnConversationFinished;
 
     [Header("UI")]
     public TextMeshProUGUI lineText;
@@ -28,28 +27,32 @@ public class ConversationManager : MonoBehaviour
     public float lineDuration = 50f;
     public string Participant = "P01";
     
+    [Header("Player Speaking Settings")]
+    public float playerSpeakingTime = 10f;
+    public bool useTextBasedDuration = false;
+
     [Header("Gender & Group")]
-    private string participantGender; // "female" or "male"
-    private int groupNumber; // 1, 2, or 3
+    private string participantGender;
+    private int groupNumber;
 
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
     public AudioSource AudioAvatar;
 
     [Header("Avatar Control")]
-    public CharacterRetargeter retargeter; // Meta XR Movement SDK retargeter
-    public Animator selfAvatarAnimator;    // Animator for Mixamo speaking animation
+    public CharacterRetargeter retargeter;
+    public Animator selfAvatarAnimator;
+
+    [Header("Lip Sync")]
+    public OVRLipSyncContext avatarLipsync;
+    public OVRLipSyncContext interlocutorLipsync;
 
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
-    public OVRLipSyncContext avatarLipsync; // OVRLipSyncContext for participant avatar
-    public OVRLipSyncContext interlocutorLipsync; // OVRLipSyncContext for interlocutor
-    
     public void BindToAvatar(GameObject avatar)
     {
         AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
-
         if (bindings == null)
         {
             Debug.LogError("Avatar does not have AvatarBindings component!");
@@ -60,27 +63,10 @@ public class ConversationManager : MonoBehaviour
         retargeter = bindings.retargeter;
         avatarLipsync = bindings.lipSync;
         AudioAvatar = bindings.voiceSource;
-        
-        // Ensure AudioSource is properly configured
-        if (AudioAvatar != null)
-        {
-            AudioAvatar.playOnAwake = false;
-            AudioAvatar.loop = false;
-            if (AudioAvatar.mute)
-            {
-                AudioAvatar.mute = false;
-                Debug.Log($"[ConversationManager] Unmuted AudioAvatar");
-            }
-            if (AudioAvatar.volume == 0)
-            {
-                AudioAvatar.volume = 1.0f;
-                Debug.Log($"[ConversationManager] Set AudioAvatar volume to 1.0");
-            }
-        }
-        
+
         Debug.Log("[ConversationManager] Participant avatar bound successfully");
     }
-    
+
     public void BindToInterlocutor(GameObject interlocutor)
     {
         if (interlocutor == null)
@@ -89,100 +75,58 @@ public class ConversationManager : MonoBehaviour
             return;
         }
 
-        // Try to get AvatarBindings component first
         AvatarBindings bindings = interlocutor.GetComponent<AvatarBindings>();
-        
         if (bindings != null)
         {
             interlocutorLipsync = bindings.lipSync;
             AudioInterlocutor = bindings.voiceSource;
-            Debug.Log($"[ConversationManager] Interlocutor bound via AvatarBindings: {interlocutor.name}");
         }
         else
         {
-            // Fallback: search in children
             interlocutorLipsync = interlocutor.GetComponentInChildren<OVRLipSyncContext>(true);
             AudioInterlocutor = interlocutor.GetComponentInChildren<AudioSource>(true);
-            Debug.Log($"[ConversationManager] Interlocutor bound via GetComponentInChildren: {interlocutor.name}");
         }
 
-        if (interlocutorLipsync == null)
-        {
-            Debug.LogError($"[ConversationManager] Could not find OVRLipSyncContext on interlocutor: {interlocutor.name}");
-        }
-        else
-        {
-            Debug.Log($"[ConversationManager] ✓ Interlocutor lip sync context found: {interlocutorLipsync.gameObject.name}");
-        }
-
-        if (AudioInterlocutor == null)
-        {
-            Debug.LogError($"[ConversationManager] Could not find AudioSource on interlocutor: {interlocutor.name}");
-        }
-        else
-        {
-            // Ensure AudioSource is properly configured
-            AudioInterlocutor.playOnAwake = false;
-            AudioInterlocutor.loop = false;
-            if (AudioInterlocutor.mute)
-            {
-                AudioInterlocutor.mute = false;
-                Debug.Log($"[ConversationManager] Unmuted AudioInterlocutor");
-            }
-            if (AudioInterlocutor.volume == 0)
-            {
-                AudioInterlocutor.volume = 1.0f;
-                Debug.Log($"[ConversationManager] Set AudioInterlocutor volume to 1.0");
-            }
-            Debug.Log($"[ConversationManager] ✓ Interlocutor AudioSource found: {AudioInterlocutor.gameObject.name}");
-        }
+        Debug.Log($"[ConversationManager] Interlocutor bound: {interlocutor.name}");
     }
+
     public void SetGenderAndGroup(string gender, int group)
     {
         participantGender = gender.ToLower();
         groupNumber = group;
-        Debug.Log($"ConversationManager: Gender set to {participantGender}, Group set to {groupNumber}");
+        Debug.Log($"ConversationManager: Gender={participantGender}, Group={groupNumber}");
     }
 
     public void StartTask()
     {
-        if(avatarLipsync == null){
-            avatarLipsync = this.GetComponent<OVRLipSyncContext>();
-        }
-
-        // Validate gender and group are set
         if (string.IsNullOrEmpty(participantGender))
         {
-            Debug.LogError("ConversationManager: Gender not set! Call SetGenderAndGroup() before StartTask()");
-            participantGender = "female"; // fallback
+            Debug.LogError("Gender not set! Using fallback.");
+            participantGender = "female";
         }
 
         if (groupNumber == 0)
         {
-            Debug.LogError("ConversationManager: Group number not set! Call SetGenderAndGroup() before StartTask()");
-            groupNumber = 1; // fallback
+            Debug.LogError("Group not set! Using fallback.");
+            groupNumber = 1;
         }
 
-        // Diagnostic: Check AudioSource setup
-        Debug.Log("=== AUDIO SOURCE DIAGNOSTIC ===");
+        // DIAGNOSTIC: Check Inspector assignments
+        Debug.Log("========== START TASK DIAGNOSTIC ==========");
+        Debug.Log($"AudioAvatar: {(AudioAvatar != null ? AudioAvatar.gameObject.name : "NULL")}");
+        Debug.Log($"AudioInterlocutor: {(AudioInterlocutor != null ? AudioInterlocutor.gameObject.name : "NULL")}");
+        Debug.Log($"avatarLipsync: {(avatarLipsync != null ? avatarLipsync.gameObject.name : "NULL")}");
+        Debug.Log($"interlocutorLipsync: {(interlocutorLipsync != null ? interlocutorLipsync.gameObject.name : "NULL")}");
+        
         if (AudioAvatar != null)
         {
-            Debug.Log($"AudioAvatar: {AudioAvatar.gameObject.name}, Volume: {AudioAvatar.volume}, Mute: {AudioAvatar.mute}, Enabled: {AudioAvatar.enabled}");
+            Debug.Log($"AudioAvatar - Volume: {AudioAvatar.volume}, Mute: {AudioAvatar.mute}, Enabled: {AudioAvatar.enabled}");
         }
-        else
-        {
-            Debug.LogError("AudioAvatar is NULL!");
-        }
-
         if (AudioInterlocutor != null)
         {
-            Debug.Log($"AudioInterlocutor: {AudioInterlocutor.gameObject.name}, Volume: {AudioInterlocutor.volume}, Mute: {AudioInterlocutor.mute}, Enabled: {AudioInterlocutor.enabled}");
+            Debug.Log($"AudioInterlocutor - Volume: {AudioInterlocutor.volume}, Mute: {AudioInterlocutor.mute}, Enabled: {AudioInterlocutor.enabled}");
         }
-        else
-        {
-            Debug.LogError("AudioInterlocutor is NULL!");
-        }
-        Debug.Log("==============================");
+        Debug.Log("==========================================");
 
         LoadConversation(Participant);
         PreloadAudioClips();
@@ -193,62 +137,26 @@ public class ConversationManager : MonoBehaviour
             lineText.text = "No conversation lines found!";
     }
 
-
     void PreloadAudioClips()
     {
-        // Determine the correct audio path based on gender and group
         string audioPath = $"conversation-audio/{participantGender}-participant/Group{groupNumber}";
-
-        Debug.Log($"[ConversationManager] Loading audio clips from: Resources/{audioPath}");
-        Debug.Log($"[ConversationManager] Gender: {participantGender}, Group: {groupNumber}");
+        Debug.Log($"[Audio] Loading from: Resources/{audioPath}");
 
         AudioClip[] clips = Resources.LoadAll<AudioClip>(audioPath);
-
-        Debug.Log($"[ConversationManager] Found {clips.Length} clips at path: {audioPath}");
-
+        
         if (clips.Length == 0)
         {
-            Debug.LogWarning($"[ConversationManager] No audio clips found at path: {audioPath}. Falling back to default.");
+            Debug.LogWarning($"No clips found at {audioPath}, trying fallback");
             clips = Resources.LoadAll<AudioClip>("conversation-audio");
-            Debug.Log($"[ConversationManager] Fallback found {clips.Length} clips");
         }
-
-        // Count by type
-        int iCount = 0;
-        int saCount = 0;
-        int otherCount = 0;
 
         foreach (var clip in clips)
         {
             clipCache[clip.name] = clip;
-            
-            if (clip.name.StartsWith("I_"))
-                iCount++;
-            else if (clip.name.StartsWith("SA_"))
-                saCount++;
-            else
-                otherCount++;
         }
 
-        Debug.Log($"[ConversationManager] === AUDIO LOADING SUMMARY ===");
-        Debug.Log($"[ConversationManager] Total clips loaded: {clips.Length}");
-        Debug.Log($"[ConversationManager] Interlocutor (I_*): {iCount} clips");
-        Debug.Log($"[ConversationManager] Self-Avatar (SA_*): {saCount} clips");
-        Debug.Log($"[ConversationManager] Other: {otherCount} clips");
-        Debug.Log($"[ConversationManager] Total in cache: {clipCache.Count}");
-        
-        if (saCount == 0 && iCount > 0)
-        {
-            Debug.LogError($"[ConversationManager] ⚠ WARNING: No SA clips loaded but {iCount} I clips found!");
-            Debug.LogError($"[ConversationManager] Self-Avatar audio will NOT play during conversation!");
-        }
-        else if (saCount > 0 && iCount > 0)
-        {
-            Debug.Log($"[ConversationManager] ✓ Both I and SA audio loaded successfully!");
-        }
+        Debug.Log($"[Audio] Loaded {clipCache.Count} clips");
     }
-
-
 
     void LoadConversation(string participant)
     {
@@ -262,23 +170,14 @@ public class ConversationManager : MonoBehaviour
         string[] lines = csvFile.text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
         conversation.Clear();
 
-        Debug.Log($"[CSV] Loading conversation for participant: {participant}");
-
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i].Trim();
             if (string.IsNullOrEmpty(line)) continue;
 
-            // Parse CSV line properly handling quoted fields with commas
             string[] values = ParseCSVLine(line);
-            
-            if (values.Length < 6)
-            {
-                Debug.LogWarning($"[CSV] Line {i} has only {values.Length} columns, expected 6. Skipping.");
-                continue;
-            }
+            if (values.Length < 6) continue;
 
-            // Clean up quotes from values
             for (int j = 0; j < values.Length; j++)
                 values[j] = values[j].Trim().Trim('"');
 
@@ -292,22 +191,15 @@ public class ConversationManager : MonoBehaviour
                 Word = values[4],
                 AudioFile = values[5]
             });
-            
-            // Debug first few lines to verify parsing
-            if (conversation.Count <= 3)
-            {
-                Debug.Log($"[CSV] Line {lineNumber}: Speaker={values[3]}, Text='{values[4].Substring(0, Mathf.Min(30, values[4].Length))}...', Audio={values[5]}");
-            }
         }
 
         conversation = conversation.OrderBy(c => c.Line).ToList();
-        Debug.Log($"[CSV] Total lines loaded for {participant}: {conversation.Count}");
+        Debug.Log($"[CSV] Loaded {conversation.Count} lines for {participant}");
     }
 
-    // Properly parse CSV line handling quoted fields with commas
     private string[] ParseCSVLine(string line)
     {
-        var result = new System.Collections.Generic.List<string>();
+        var result = new List<string>();
         bool inQuotes = false;
         string currentField = "";
 
@@ -317,230 +209,147 @@ public class ConversationManager : MonoBehaviour
 
             if (c == '"')
             {
-                // Toggle quote state
                 inQuotes = !inQuotes;
             }
             else if (c == ',' && !inQuotes)
             {
-                // End of field
                 result.Add(currentField);
                 currentField = "";
             }
             else
             {
-                // Add character to current field
                 currentField += c;
             }
         }
 
-        // Add the last field
         result.Add(currentField);
-
         return result.ToArray();
     }
 
     IEnumerator RunConversation()
-{
-    foreach (var line in conversation)
     {
-        AudioSource sourceToUse = null;
-        string displayText = "";
-
-        // Determine speaker
-        if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
+        foreach (var line in conversation)
         {
-            sourceToUse = AudioInterlocutor;
-            displayText = "...";
-            
-            // Enable interlocutor lip sync
-            if (interlocutorLipsync != null)
+            AudioSource sourceToUse = null;
+            string displayText = "";
+
+            // Determine speaker
+            if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
             {
-                interlocutorLipsync.enabled = true;
-                interlocutorLipsync.audioLoopback = false; // Use AudioSource
-                Debug.Log("[LipSync] Interlocutor lip sync enabled (audio mode)");
+                sourceToUse = AudioInterlocutor;
+                displayText = "...";
             }
-            
-            // Disable avatar lip sync
-            if (avatarLipsync != null)
+            else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
             {
-                avatarLipsync.enabled = false;
+                sourceToUse = AudioAvatar;
+                displayText = "...";
+
+                if (retargeter != null)
+                    retargeter.enabled = true;
+
+                if (selfAvatarAnimator != null)
+                {
+                    selfAvatarAnimator.Play("Standing", 0, 0f);
+                    selfAvatarAnimator.Update(0f);
+                }
             }
-        }
-        else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
-        {
-            sourceToUse = AudioAvatar;
-            displayText = "...";
-
-            if (retargeter != null)
-                retargeter.enabled = true;
-            
-            if (selfAvatarAnimator != null)
+            else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
-                selfAvatarAnimator.Play("Standing", 0, 0f); 
-                selfAvatarAnimator.Update(0f);
-            }
-            
-            // Enable avatar lip sync for audio playback
-            if (avatarLipsync != null)
-            {
-                avatarLipsync.enabled = true;
-                avatarLipsync.audioLoopback = false; // Use AudioSource, not microphone
-                Debug.Log("[LipSync] Avatar lip sync enabled (audio mode)");
-            }
-            
-            // Disable interlocutor lip sync
-            if (interlocutorLipsync != null)
-            {
-                interlocutorLipsync.enabled = false;
-            }
-        }
-        else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
-        {
-            sourceToUse = AudioAvatar;
-            displayText = $"{line.Speaker}: {line.Word}";
-            
-            // Enable avatar lip sync for MICROPHONE
-            if (avatarLipsync != null)
-            {
-                avatarLipsync.enabled = true;
-                avatarLipsync.audioLoopback = true; // IMPORTANT: Use microphone loopback!
-                Debug.Log("[LipSync] Avatar lip sync enabled (MICROPHONE mode)");
-            }
-            
-            // Disable interlocutor lip sync
-            if (interlocutorLipsync != null)
-            {
-                interlocutorLipsync.enabled = false;
-            }
-        }
-        else
-        {
-            displayText = $"{line.Speaker}: {line.Word}";
-        }
-
-        lineText.text = displayText;
-        float waitTime = 0f;
-
-        // --- MICROPHONE MODE ---
-        if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
-        {
-            if (sourceToUse != null && Microphone.devices.Length > 0)
-            {
-                string micName = Microphone.devices[0];
-                int sampleRate = 44100;
-
-                Debug.Log($"[Microphone] Starting recording from: {micName}");
-
-                // Store original volume and mute state
-                float originalVolume = sourceToUse.volume;
-                bool originalMute = sourceToUse.mute;
-
-                // MUTE the AudioSource so you don't hear yourself
-                sourceToUse.mute = true;
-
-                AudioClip micClip = Microphone.Start(micName, true, 5, sampleRate);
-                sourceToUse.clip = micClip;
-
-                while (!(Microphone.GetPosition(micName) > 0))
-                    yield return null;
-
-                // Play for lip sync (but muted so you don't hear it)
-                sourceToUse.Play();
-
-                Debug.Log($"[Microphone] Recording for {Mathf.Min(5f, line.Word.Length * 0.2f)} seconds (muted)");
-
-                // Wait for the duration of the line
-                yield return new WaitForSeconds(Mathf.Min(5f, line.Word.Length * 0.5f));
-
-                Microphone.End(micName);
-                sourceToUse.Stop();
-                sourceToUse.loop = false;
-
-                // Restore original volume and mute state
-                sourceToUse.volume = originalVolume;
-                sourceToUse.mute = originalMute;
-
-                Debug.Log($"[Microphone] Recording ended");
+                sourceToUse = AudioAvatar;
+                displayText = $"{line.Speaker}: {line.Word}";
             }
             else
             {
-                Debug.LogWarning("No microphone detected or AudioSource is null!");
-                yield return new WaitForSeconds(2f);
-            }
-            continue;
-        }
-
-        // --- NORMAL AUDIO FILE LOGIC (SA / I / others) ---
-        if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
-        {
-            // Ensure AudioSource is unmuted for playback (might be muted from previous P turn)
-            if (sourceToUse.mute)
-            {
-                sourceToUse.mute = false;
-                Debug.Log($"[Audio] Unmuted AudioSource for {line.Speaker}");
-            }
-            
-            string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
-            Debug.Log($"[Audio] Looking for clip: '{clipKey}' for speaker: {line.Speaker}");
-            
-            if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
-            {
-                // fallback case-insensitive search
-                clip = clipCache.FirstOrDefault(kvp => kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase)).Value;
+                displayText = $"{line.Speaker}: {line.Word}";
             }
 
-            if (clip != null)
+            lineText.text = displayText;
+            float waitTime = 0f;
+
+            // --- MICROPHONE MODE (Player speaking) ---
+            if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
-                Debug.Log($"[Audio] Playing clip: {clip.name} on {sourceToUse.gameObject.name}, Volume: {sourceToUse.volume}, Mute: {sourceToUse.mute}");
-                sourceToUse.clip = clip;
-                sourceToUse.Stop();
-                sourceToUse.Play();
-                waitTime = clip.length;
-                
-                // Check if audio is actually playing
-                if (sourceToUse.isPlaying)
+                if (sourceToUse != null && Microphone.devices.Length > 0)
                 {
-                    Debug.Log($"[Audio] ✓ Audio is playing");
+                    string micName = Microphone.devices[0];
+                    float originalVolume = sourceToUse.volume;
+                    bool originalMute = sourceToUse.mute;
+
+                    sourceToUse.mute = true;
+
+                    AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
+                    sourceToUse.clip = micClip;
+
+                    while (!(Microphone.GetPosition(micName) > 0))
+                        yield return null;
+
+                    sourceToUse.Play();
+
+                    float duration = useTextBasedDuration 
+                        ? Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f) 
+                        : playerSpeakingTime;
+
+                    yield return new WaitForSeconds(duration);
+
+                    Microphone.End(micName);
+                    sourceToUse.Stop();
+                    sourceToUse.volume = originalVolume;
+                    sourceToUse.mute = originalMute;
                 }
                 else
                 {
-                    Debug.LogWarning($"[Audio] ✗ Audio failed to play!");
+                    yield return new WaitForSeconds(2f);
+                }
+                continue;
+            }
+
+            // --- AUDIO FILE PLAYBACK (SA / I) ---
+            if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && 
+                !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
+            {
+                string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
+                Debug.Log($"[Audio] Speaker: {line.Speaker}, Looking for clip: '{clipKey}'");
+
+                if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
+                {
+                    clip = clipCache.FirstOrDefault(kvp => 
+                        kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase)).Value;
+                }
+
+                if (clip != null)
+                {
+                    Debug.Log($"[Audio] Found clip: {clip.name}, Length: {clip.length}s");
+                    Debug.Log($"[Audio] Playing on: {sourceToUse.gameObject.name}, Volume: {sourceToUse.volume}, Mute: {sourceToUse.mute}");
+                    
+                    sourceToUse.clip = clip;
+                    sourceToUse.Play();
+                    
+                    // Verify it's actually playing
+                    yield return new WaitForSeconds(0.1f);
+                    Debug.Log($"[Audio] Is playing: {sourceToUse.isPlaying}, Time: {sourceToUse.time}");
+                    
+                    waitTime = clip.length;
+                }
+                else
+                {
+                    Debug.LogWarning($"[Audio] Clip not found: {clipKey}");
+                    Debug.Log($"[Audio] Available clips: {string.Join(", ", clipCache.Keys)}");
                 }
             }
-            else
+
+            if (waitTime <= 0f)
+                waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
+
+            yield return new WaitForSeconds(waitTime);
+
+            if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase) && retargeter != null)
             {
-                Debug.LogWarning($"[Audio] ✗ Audio clip not found: '{line.AudioFile}' (searched for: '{clipKey}')");
-                Debug.Log($"[Audio] Available clips in cache: {string.Join(", ", clipCache.Keys)}");
+                retargeter.enabled = true;
             }
         }
-        else
-        {
-            if (sourceToUse == null)
-                Debug.LogWarning($"[Audio] AudioSource is null for speaker: {line.Speaker}");
-        }
 
-        if (waitTime <= 0f)
-            waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
-
-        yield return new WaitForSeconds(waitTime);
-
-        // Re-enable retargeter after SA finishes
-        if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase) && retargeter != null)
-        {
-            retargeter.enabled = true;
-        }
+        lineText.text = "Conversation terminée !";
+        Debug.Log("Conversation complete!");
+        OnConversationFinished?.Invoke();
     }
-
-    // lineText.text = "Conversation terminée !";
-    // Debug.Log("Conversation complete!");
-
-    lineText.text = "Conversation terminée !";
-Debug.Log("Conversation complete!");
-
-OnConversationFinished?.Invoke();
-
 }
-
-}
-
-

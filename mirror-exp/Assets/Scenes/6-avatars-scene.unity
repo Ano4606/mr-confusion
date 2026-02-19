@@ -418,7 +418,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -438,7 +438,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2411,6 +2411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 155209761}
   - component: {fileID: 155209762}
+  - component: {fileID: 155209763}
   m_Layer: 0
   m_Name: ConversationManager
   m_TagString: Untagged
@@ -2448,12 +2449,27 @@ MonoBehaviour:
   lineText: {fileID: 0}
   lineDuration: 50
   Participant: P01
+  playerSpeakingTime: 10
+  useTextBasedDuration: 0
   AudioInterlocutor: {fileID: 247915727}
   AudioAvatar: {fileID: 1098076881}
   retargeter: {fileID: 0}
   selfAvatarAnimator: {fileID: 0}
   avatarLipsync: {fileID: 0}
   interlocutorLipsync: {fileID: 0}
+--- !u!114 &155209763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155209759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711c80a53497540a79f7900a2ccdee9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationManager: {fileID: 155209762}
 --- !u!1 &157978976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,9 +4289,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 241242867}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 241242872}
   m_SourcePrefab: {fileID: 100100000, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
 --- !u!4 &241242863 stripped
 Transform:
@@ -4356,7 +4369,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -4376,7 +4389,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4461,26 +4474,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &241242872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241242866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lipSyncContext: {fileID: 0}
-  morphTarget: {fileID: 0}
-  audioSource: {fileID: 0}
-  logEveryFrame: 1
-  logVisemeChanges: 1
-  lastViseme: 0
-  lastMaxWeight: 0
-  frameCount: 0
 --- !u!4 &241619279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3234770425898726917, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
@@ -4574,7 +4567,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5299,7 +5292,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -5319,12 +5312,12 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -5967,7 +5960,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -5987,7 +5980,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6723,7 +6716,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -6743,7 +6736,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -12585,7 +12578,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -13934,7 +13927,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -13954,7 +13947,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -14880,7 +14873,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -14900,7 +14893,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -15978,7 +15971,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -15998,7 +15991,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -19910,7 +19903,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -19930,7 +19923,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -20082,14 +20075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lipSyncContext: {fileID: 0}
-  morphTarget: {fileID: 0}
-  audioSource: {fileID: 0}
-  logEveryFrame: 1
-  logVisemeChanges: 1
-  lastViseme: 0
-  lastMaxWeight: 0
-  frameCount: 0
 --- !u!4 &1589870960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9060497430412823467, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
@@ -20733,6 +20718,8 @@ MonoBehaviour:
   lineText: {fileID: 71081453}
   lineDuration: 50
   Participant: P01
+  playerSpeakingTime: 10
+  useTextBasedDuration: 0
   AudioInterlocutor: {fileID: 247915727}
   AudioAvatar: {fileID: 1098076881}
   retargeter: {fileID: 0}
@@ -22423,7 +22410,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -22443,7 +22430,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -25241,7 +25228,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -25261,7 +25248,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -28120,7 +28107,7 @@ MonoBehaviour:
   enableAcceleration: 1
   enableKeyboardInput: 0
   enableTouchInput: 0
-  audioLoopback: 0
+  audioLoopback: 1
   loopbackKey: 108
   showVisemes: 0
   debugVisemesKey: 100
@@ -28140,7 +28127,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -58885,10 +58872,10 @@ SceneRoots:
   - {fileID: 1659752431}
   - {fileID: 1646554835}
   - {fileID: 2037817964}
+  - {fileID: 175490679}
   - {fileID: 155209761}
   - {fileID: 24184949}
   - {fileID: 77169964}
-  - {fileID: 175490679}
   - {fileID: 615366864}
   - {fileID: 670619484}
   - {fileID: 2107264576}
