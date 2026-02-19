@@ -28,13 +28,6 @@ public class ConversationManager : MonoBehaviour
     public float lineDuration = 50f;
     public string Participant = "P01";
     
-    [Header("Microphone Settings")]
-    [Tooltip("Maximum time for player to speak (in seconds)")]
-    public float playerSpeakingTime = 10f;
-    
-    [Tooltip("Calculate time based on text length (0.2s per character)")]
-    public bool useTextBasedDuration = false;
-    
     [Header("Gender & Group")]
     private string participantGender; // "female" or "male"
     private int groupNumber; // 1, 2, or 3
@@ -50,7 +43,9 @@ public class ConversationManager : MonoBehaviour
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
-    public OVRLipSyncContext avatarLipsync; //OVRLipSynccontext inside the avatar
+    public OVRLipSyncContext avatarLipsync; // OVRLipSyncContext for participant avatar
+    public OVRLipSyncContext interlocutorLipsync; // OVRLipSyncContext for interlocutor
+    
     public void BindToAvatar(GameObject avatar)
     {
     AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
@@ -260,6 +255,20 @@ public class ConversationManager : MonoBehaviour
         {
             sourceToUse = AudioInterlocutor;
             displayText = "...";
+            
+            // Enable interlocutor lip sync
+            if (interlocutorLipsync != null)
+            {
+                interlocutorLipsync.enabled = true;
+                interlocutorLipsync.audioLoopback = false; // Use AudioSource
+                Debug.Log("[LipSync] Interlocutor lip sync enabled (audio mode)");
+            }
+            
+            // Disable avatar lip sync
+            if (avatarLipsync != null)
+            {
+                avatarLipsync.enabled = false;
+            }
         }
         else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
         {
@@ -275,16 +284,38 @@ public class ConversationManager : MonoBehaviour
                 selfAvatarAnimator.Update(0f);
             }
             
+            // Enable avatar lip sync for audio playback
             if (avatarLipsync != null)
-                avatarLipsync.audioLoopback = false;
+            {
+                avatarLipsync.enabled = true;
+                avatarLipsync.audioLoopback = false; // Use AudioSource, not microphone
+                Debug.Log("[LipSync] Avatar lip sync enabled (audio mode)");
+            }
+            
+            // Disable interlocutor lip sync
+            if (interlocutorLipsync != null)
+            {
+                interlocutorLipsync.enabled = false;
+            }
         }
         else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
         {
             sourceToUse = AudioAvatar;
             displayText = $"{line.Speaker}: {line.Word}";
             
+            // Enable avatar lip sync for MICROPHONE
             if (avatarLipsync != null)
-                avatarLipsync.audioLoopback = false;
+            {
+                avatarLipsync.enabled = true;
+                avatarLipsync.audioLoopback = true; // IMPORTANT: Use microphone loopback!
+                Debug.Log("[LipSync] Avatar lip sync enabled (MICROPHONE mode)");
+            }
+            
+            // Disable interlocutor lip sync
+            if (interlocutorLipsync != null)
+            {
+                interlocutorLipsync.enabled = false;
+            }
         }
         else
         {
@@ -311,22 +342,7 @@ public class ConversationManager : MonoBehaviour
                 // MUTE the AudioSource so you don't hear yourself
                 sourceToUse.mute = true;
 
-                // Calculate recording duration
-                float recordingDuration;
-                if (useTextBasedDuration)
-                {
-                    // Use text length to calculate duration (0.2s per character, max playerSpeakingTime)
-                    recordingDuration = Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f);
-                }
-                else
-                {
-                    // Use fixed duration from Inspector
-                    recordingDuration = playerSpeakingTime;
-                }
-
-                // Start microphone with enough buffer for the recording
-                int recordingLength = Mathf.CeilToInt(recordingDuration) + 1;
-                AudioClip micClip = Microphone.Start(micName, true, recordingLength, sampleRate);
+                AudioClip micClip = Microphone.Start(micName, true, 5, sampleRate);
                 sourceToUse.clip = micClip;
 
                 while (!(Microphone.GetPosition(micName) > 0))
@@ -335,10 +351,10 @@ public class ConversationManager : MonoBehaviour
                 // Play for lip sync (but muted so you don't hear it)
                 sourceToUse.Play();
 
-                Debug.Log($"[Microphone] Recording for {recordingDuration:F1} seconds (muted)");
+                Debug.Log($"[Microphone] Recording for {Mathf.Min(5f, line.Word.Length * 0.2f)} seconds (muted)");
 
-                // Wait for the duration
-                yield return new WaitForSeconds(recordingDuration);
+                // Wait for the duration of the line
+                yield return new WaitForSeconds(Mathf.Min(5f, line.Word.Length * 0.5f));
 
                 Microphone.End(micName);
                 sourceToUse.Stop();
@@ -361,6 +377,13 @@ public class ConversationManager : MonoBehaviour
         // --- NORMAL AUDIO FILE LOGIC (SA / I / others) ---
         if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
         {
+            // Ensure AudioSource is unmuted for playback (might be muted from previous P turn)
+            if (sourceToUse.mute)
+            {
+                sourceToUse.mute = false;
+                Debug.Log($"[Audio] Unmuted AudioSource for {line.Speaker}");
+            }
+            
             string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
             Debug.Log($"[Audio] Looking for clip: '{clipKey}' for speaker: {line.Speaker}");
             

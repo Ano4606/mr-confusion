@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/6-avatars-scene.unity
     guid: 93bb24f8d99ed4bd8a857fda9dcc39c5
   - enabled: 0
-    path: "Assets/Samples/Meta XR Interaction \u200BSDK/72.0.0/Example Scenes/UISetExamples.unity"
-    guid: 07e3686372a704147b219707ee3c6f62
+    path: Assets/Scenes/AnimatorScene.unity
+    guid: 7f7cdaaeb004d4950aced0ef2f82a5bc
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 014fe627c0e3642f48fbd502a2f675db, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 4c3e8c3f24ee0484ead21a7ae9d00f02, type: 2}
