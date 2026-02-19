@@ -48,19 +48,94 @@ public class ConversationManager : MonoBehaviour
     
     public void BindToAvatar(GameObject avatar)
     {
-    AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
+        AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
 
-            if (bindings == null)
+        if (bindings == null)
+        {
+            Debug.LogError("Avatar does not have AvatarBindings component!");
+            return;
+        }
+
+        selfAvatarAnimator = bindings.animator;
+        retargeter = bindings.retargeter;
+        avatarLipsync = bindings.lipSync;
+        AudioAvatar = bindings.voiceSource;
+        
+        // Ensure AudioSource is properly configured
+        if (AudioAvatar != null)
+        {
+            AudioAvatar.playOnAwake = false;
+            AudioAvatar.loop = false;
+            if (AudioAvatar.mute)
             {
-                Debug.LogError("Avatar does not have AvatarBindings component!");
-                return;
+                AudioAvatar.mute = false;
+                Debug.Log($"[ConversationManager] Unmuted AudioAvatar");
             }
-
-    selfAvatarAnimator = bindings.animator;
-    retargeter = bindings.retargeter;
-    avatarLipsync = bindings.lipSync;
-    AudioAvatar = bindings.voiceSource;
+            if (AudioAvatar.volume == 0)
+            {
+                AudioAvatar.volume = 1.0f;
+                Debug.Log($"[ConversationManager] Set AudioAvatar volume to 1.0");
+            }
+        }
+        
+        Debug.Log("[ConversationManager] Participant avatar bound successfully");
+    }
     
+    public void BindToInterlocutor(GameObject interlocutor)
+    {
+        if (interlocutor == null)
+        {
+            Debug.LogError("[ConversationManager] Interlocutor GameObject is null!");
+            return;
+        }
+
+        // Try to get AvatarBindings component first
+        AvatarBindings bindings = interlocutor.GetComponent<AvatarBindings>();
+        
+        if (bindings != null)
+        {
+            interlocutorLipsync = bindings.lipSync;
+            AudioInterlocutor = bindings.voiceSource;
+            Debug.Log($"[ConversationManager] Interlocutor bound via AvatarBindings: {interlocutor.name}");
+        }
+        else
+        {
+            // Fallback: search in children
+            interlocutorLipsync = interlocutor.GetComponentInChildren<OVRLipSyncContext>(true);
+            AudioInterlocutor = interlocutor.GetComponentInChildren<AudioSource>(true);
+            Debug.Log($"[ConversationManager] Interlocutor bound via GetComponentInChildren: {interlocutor.name}");
+        }
+
+        if (interlocutorLipsync == null)
+        {
+            Debug.LogError($"[ConversationManager] Could not find OVRLipSyncContext on interlocutor: {interlocutor.name}");
+        }
+        else
+        {
+            Debug.Log($"[ConversationManager] ✓ Interlocutor lip sync context found: {interlocutorLipsync.gameObject.name}");
+        }
+
+        if (AudioInterlocutor == null)
+        {
+            Debug.LogError($"[ConversationManager] Could not find AudioSource on interlocutor: {interlocutor.name}");
+        }
+        else
+        {
+            // Ensure AudioSource is properly configured
+            AudioInterlocutor.playOnAwake = false;
+            AudioInterlocutor.loop = false;
+            if (AudioInterlocutor.mute)
+            {
+                AudioInterlocutor.mute = false;
+                Debug.Log($"[ConversationManager] Unmuted AudioInterlocutor");
+            }
+            if (AudioInterlocutor.volume == 0)
+            {
+                AudioInterlocutor.volume = 1.0f;
+                Debug.Log($"[ConversationManager] Set AudioInterlocutor volume to 1.0");
+            }
+            Debug.Log($"[ConversationManager] ✓ Interlocutor AudioSource found: {AudioInterlocutor.gameObject.name}");
+        }
     }
     public void SetGenderAndGroup(string gender, int group)
     {
@@ -87,6 +162,27 @@ public class ConversationManager : MonoBehaviour
             Debug.LogError("ConversationManager: Group number not set! Call SetGenderAndGroup() before StartTask()");
             groupNumber = 1; // fallback
         }
+
+        // Diagnostic: Check AudioSource setup
+        Debug.Log("=== AUDIO SOURCE DIAGNOSTIC ===");
+        if (AudioAvatar != null)
+        {
+            Debug.Log($"AudioAvatar: {AudioAvatar.gameObject.name}, Volume: {AudioAvatar.volume}, Mute: {AudioAvatar.mute}, Enabled: {AudioAvatar.enabled}");
+        }
+        else
+        {
+            Debug.LogError("AudioAvatar is NULL!");
+        }
+
+        if (AudioInterlocutor != null)
+        {
+            Debug.Log($"AudioInterlocutor: {AudioInterlocutor.gameObject.name}, Volume: {AudioInterlocutor.volume}, Mute: {AudioInterlocutor.mute}, Enabled: {AudioInterlocutor.enabled}");
+        }
+        else
+        {
+            Debug.LogError("AudioInterlocutor is NULL!");
+        }
+        Debug.Log("==============================");
 
         LoadConversation(Participant);
         PreloadAudioClips();

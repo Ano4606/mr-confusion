@@ -116,7 +116,11 @@ using UnityEngine;
         
                 if (conversationPhase != null)
                 {
+                    // Bind participant avatar
                     conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+                    
+                    // Bind interlocutor avatar
+                    conversationPhase.BindToInterlocutor(avatarManager.ActiveInterlocutorAvatar);
                     
                     // Set gender and group for conversation audio
                     if (participantIDManager != null)

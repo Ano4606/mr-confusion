@@ -2453,6 +2453,7 @@ MonoBehaviour:
   retargeter: {fileID: 0}
   selfAvatarAnimator: {fileID: 0}
   avatarLipsync: {fileID: 0}
+  interlocutorLipsync: {fileID: 0}
 --- !u!1 &157978976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4533,7 +4534,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -5195,6 +5196,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2870506388fb348d285536f26733d808, type: 2}
@@ -5204,16 +5209,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 305775012}
+      addedObject: {fileID: 305775017}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 305775011}
+      addedObject: {fileID: 305775016}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 305775010}
+      addedObject: {fileID: 305775015}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 305775009}
+      addedObject: {fileID: 305775014}
   m_SourcePrefab: {fileID: 100100000, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
 --- !u!4 &305775005 stripped
 Transform:
@@ -5235,28 +5240,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
   m_PrefabInstance: {fileID: 305775004}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &305775009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305775008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 305775006}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &305775010
+--- !u!114 &305775014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5277,7 +5261,28 @@ MonoBehaviour:
   laughterThreshold: 0.5
   laughterMultiplier: 1.5
   smoothAmount: 70
---- !u!114 &305775011
+--- !u!114 &305775015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305775008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 305775006}
+  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
+  laughterBlendTarget: 15
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+--- !u!114 &305775016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5303,7 +5308,7 @@ MonoBehaviour:
   debugLaughterKey: 104
   showLaughter: 0
   laughterScore: 0
---- !u!82 &305775012
+--- !u!82 &305775017
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5319,7 +5324,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -12540,7 +12545,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -20733,6 +20738,7 @@ MonoBehaviour:
   retargeter: {fileID: 0}
   selfAvatarAnimator: {fileID: 0}
   avatarLipsync: {fileID: 0}
+  interlocutorLipsync: {fileID: 0}
 --- !u!1 &1652764802
 GameObject:
   m_ObjectHideFlags: 0
