@@ -9,7 +9,7 @@ using Meta.XR.Movement.Retargeting;
 
 public class ConversationManager : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class ConversationLine
     {
         public int Line;
@@ -24,16 +24,9 @@ public class ConversationManager : MonoBehaviour
     public TextMeshProUGUI lineText;
 
     [Header("Settings")]
-    public float lineDuration = 50f;
     public string Participant = "P01";
-    
-    [Header("Player Speaking Settings")]
     public float playerSpeakingTime = 10f;
     public bool useTextBasedDuration = false;
-
-    [Header("Gender & Group")]
-    private string participantGender;
-    private int groupNumber;
 
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
@@ -47,33 +40,27 @@ public class ConversationManager : MonoBehaviour
     public OVRLipSyncContext avatarLipsync;
     public OVRLipSyncContext interlocutorLipsync;
 
+    private string participantGender;
+    private int groupNumber;
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
     public void BindToAvatar(GameObject avatar)
     {
+        if (avatar == null) return;
+
         AvatarBindings bindings = avatar.GetComponent<AvatarBindings>();
-        if (bindings == null)
-        {
-            Debug.LogError("Avatar does not have AvatarBindings component!");
-            return;
-        }
+        if (bindings == null) return;
 
         selfAvatarAnimator = bindings.animator;
         retargeter = bindings.retargeter;
         avatarLipsync = bindings.lipSync;
         AudioAvatar = bindings.voiceSource;
-
-        Debug.Log("[ConversationManager] Participant avatar bound successfully");
     }
 
     public void BindToInterlocutor(GameObject interlocutor)
     {
-        if (interlocutor == null)
-        {
-            Debug.LogError("[ConversationManager] Interlocutor GameObject is null!");
-            return;
-        }
+        if (interlocutor == null) return;
 
         AvatarBindings bindings = interlocutor.GetComponent<AvatarBindings>();
         if (bindings != null)
@@ -86,86 +73,47 @@ public class ConversationManager : MonoBehaviour
             interlocutorLipsync = interlocutor.GetComponentInChildren<OVRLipSyncContext>(true);
             AudioInterlocutor = interlocutor.GetComponentInChildren<AudioSource>(true);
         }
-
-        Debug.Log($"[ConversationManager] Interlocutor bound: {interlocutor.name}");
     }
 
     public void SetGenderAndGroup(string gender, int group)
     {
         participantGender = gender.ToLower();
         groupNumber = group;
-        Debug.Log($"ConversationManager: Gender={participantGender}, Group={groupNumber}");
     }
 
     public void StartTask()
     {
         if (string.IsNullOrEmpty(participantGender))
-        {
-            Debug.LogError("Gender not set! Using fallback.");
             participantGender = "female";
-        }
 
         if (groupNumber == 0)
-        {
-            Debug.LogError("Group not set! Using fallback.");
             groupNumber = 1;
-        }
-
-        // DIAGNOSTIC: Check Inspector assignments
-        Debug.Log("========== START TASK DIAGNOSTIC ==========");
-        Debug.Log($"AudioAvatar: {(AudioAvatar != null ? AudioAvatar.gameObject.name : "NULL")}");
-        Debug.Log($"AudioInterlocutor: {(AudioInterlocutor != null ? AudioInterlocutor.gameObject.name : "NULL")}");
-        Debug.Log($"avatarLipsync: {(avatarLipsync != null ? avatarLipsync.gameObject.name : "NULL")}");
-        Debug.Log($"interlocutorLipsync: {(interlocutorLipsync != null ? interlocutorLipsync.gameObject.name : "NULL")}");
-        
-        if (AudioAvatar != null)
-        {
-            Debug.Log($"AudioAvatar - Volume: {AudioAvatar.volume}, Mute: {AudioAvatar.mute}, Enabled: {AudioAvatar.enabled}");
-        }
-        if (AudioInterlocutor != null)
-        {
-            Debug.Log($"AudioInterlocutor - Volume: {AudioInterlocutor.volume}, Mute: {AudioInterlocutor.mute}, Enabled: {AudioInterlocutor.enabled}");
-        }
-        Debug.Log("==========================================");
 
         LoadConversation(Participant);
         PreloadAudioClips();
 
         if (conversation.Count > 0)
             StartCoroutine(RunConversation());
-        else
+        else if (lineText != null)
             lineText.text = "No conversation lines found!";
     }
 
     void PreloadAudioClips()
     {
         string audioPath = $"conversation-audio/{participantGender}-participant/Group{groupNumber}";
-        Debug.Log($"[Audio] Loading from: Resources/{audioPath}");
-
         AudioClip[] clips = Resources.LoadAll<AudioClip>(audioPath);
         
         if (clips.Length == 0)
-        {
-            Debug.LogWarning($"No clips found at {audioPath}, trying fallback");
             clips = Resources.LoadAll<AudioClip>("conversation-audio");
-        }
 
         foreach (var clip in clips)
-        {
             clipCache[clip.name] = clip;
-        }
-
-        Debug.Log($"[Audio] Loaded {clipCache.Count} clips");
     }
 
     void LoadConversation(string participant)
     {
         TextAsset csvFile = Resources.Load<TextAsset>("rando");
-        if (csvFile == null)
-        {
-            Debug.LogError("CSV file not found in Resources!");
-            return;
-        }
+        if (csvFile == null) return;
 
         string[] lines = csvFile.text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
         conversation.Clear();
@@ -194,7 +142,6 @@ public class ConversationManager : MonoBehaviour
         }
 
         conversation = conversation.OrderBy(c => c.Line).ToList();
-        Debug.Log($"[CSV] Loaded {conversation.Count} lines for {participant}");
     }
 
     private string[] ParseCSVLine(string line)
@@ -233,7 +180,6 @@ public class ConversationManager : MonoBehaviour
             AudioSource sourceToUse = null;
             string displayText = "";
 
-            // Determine speaker
             if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
             {
                 sourceToUse = AudioInterlocutor;
@@ -263,77 +209,30 @@ public class ConversationManager : MonoBehaviour
                 displayText = $"{line.Speaker}: {line.Word}";
             }
 
-            lineText.text = displayText;
+            if (lineText != null)
+                lineText.text = displayText;
+
             float waitTime = 0f;
 
-            // --- MICROPHONE MODE (Player speaking) ---
             if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
-                if (sourceToUse != null && Microphone.devices.Length > 0)
-                {
-                    string micName = Microphone.devices[0];
-                    float originalVolume = sourceToUse.volume;
-                    bool originalMute = sourceToUse.mute;
-
-                    sourceToUse.mute = true;
-
-                    AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
-                    sourceToUse.clip = micClip;
-
-                    while (!(Microphone.GetPosition(micName) > 0))
-                        yield return null;
-
-                    sourceToUse.Play();
-
-                    float duration = useTextBasedDuration 
-                        ? Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f) 
-                        : playerSpeakingTime;
-
-                    yield return new WaitForSeconds(duration);
-
-                    Microphone.End(micName);
-                    sourceToUse.Stop();
-                    sourceToUse.volume = originalVolume;
-                    sourceToUse.mute = originalMute;
-                }
-                else
-                {
-                    yield return new WaitForSeconds(2f);
-                }
+                yield return StartCoroutine(HandlePlayerSpeaking(sourceToUse, line));
                 continue;
             }
 
-            // --- AUDIO FILE PLAYBACK (SA / I) ---
             if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && 
                 !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
             {
                 string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
-                Debug.Log($"[Audio] Speaker: {line.Speaker}, Looking for clip: '{clipKey}'");
 
                 if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
-                {
-                    clip = clipCache.FirstOrDefault(kvp => 
-                        kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase)).Value;
-                }
+                    clip = clipCache.FirstOrDefault(kvp => kvp.Key.Equals(clipKey, StringComparison.OrdinalIgnoreCase)).Value;
 
                 if (clip != null)
                 {
-                    Debug.Log($"[Audio] Found clip: {clip.name}, Length: {clip.length}s");
-                    Debug.Log($"[Audio] Playing on: {sourceToUse.gameObject.name}, Volume: {sourceToUse.volume}, Mute: {sourceToUse.mute}");
-                    
                     sourceToUse.clip = clip;
                     sourceToUse.Play();
-                    
-                    // Verify it's actually playing
-                    yield return new WaitForSeconds(0.1f);
-                    Debug.Log($"[Audio] Is playing: {sourceToUse.isPlaying}, Time: {sourceToUse.time}");
-                    
                     waitTime = clip.length;
-                }
-                else
-                {
-                    Debug.LogWarning($"[Audio] Clip not found: {clipKey}");
-                    Debug.Log($"[Audio] Available clips: {string.Join(", ", clipCache.Keys)}");
                 }
             }
 
@@ -343,13 +242,46 @@ public class ConversationManager : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
             if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase) && retargeter != null)
-            {
                 retargeter.enabled = true;
-            }
         }
 
-        lineText.text = "Conversation terminée ";
-        Debug.Log("Conversation complete!");
+        if (lineText != null)
+            lineText.text = "Conversation terminée";
+        
         OnConversationFinished?.Invoke();
+    }
+
+    IEnumerator HandlePlayerSpeaking(AudioSource source, ConversationLine line)
+    {
+        if (source != null && Microphone.devices.Length > 0)
+        {
+            string micName = Microphone.devices[0];
+            float originalVolume = source.volume;
+            bool originalMute = source.mute;
+
+            source.mute = true;
+            AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
+            source.clip = micClip;
+
+            while (!(Microphone.GetPosition(micName) > 0))
+                yield return null;
+
+            source.Play();
+
+            float duration = useTextBasedDuration 
+                ? Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f) 
+                : playerSpeakingTime;
+
+            yield return new WaitForSeconds(duration);
+
+            Microphone.End(micName);
+            source.Stop();
+            source.volume = originalVolume;
+            source.mute = originalMute;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
     }
 }
