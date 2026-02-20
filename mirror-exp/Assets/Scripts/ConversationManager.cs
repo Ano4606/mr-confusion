@@ -192,9 +192,10 @@ public class ConversationManager : MonoBehaviour
                 displayText = "...";
 
 
-                if (avatarLipsync != null)
+                if (avatarLipsync != null){
                     avatarLipsync.audioSource = AudioAvatar;
                     avatarLipsync.audioLoopback = true;
+                    }
 
 
 
@@ -211,6 +212,9 @@ public class ConversationManager : MonoBehaviour
             {
                 sourceToUse = AudioParticipant;
                 displayText = $"{line.Speaker}: {line.Text}";
+
+                if (avatarLipsync != null)
+               avatarLipsync.audioLoopback = false;
 
             }
             else
