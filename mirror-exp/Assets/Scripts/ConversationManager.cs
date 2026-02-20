@@ -191,8 +191,12 @@ public class ConversationManager : MonoBehaviour
                 sourceToUse = AudioAvatar;
                 displayText = "...";
 
+
                 if (avatarLipsync != null)
                     avatarLipsync.audioSource = AudioAvatar;
+                    avatarLipsync.audioLoopback = true;
+
+
 
                 if (retargeter != null)
                     retargeter.enabled = true;
@@ -227,6 +231,7 @@ public class ConversationManager : MonoBehaviour
 
                 yield return StartCoroutine(HandlePlayerSpeaking(sourceToUse, line));
                 continue;
+
             }
 
 
@@ -276,6 +281,7 @@ public class ConversationManager : MonoBehaviour
         AudioAvatar.clip = micClip;
         AudioAvatar.mute = false; // mute so the player doesn't hear themselves
         AudioAvatar.Play();
+
 
         float duration = useTextBasedDuration 
             ? Mathf.Min(playerSpeakingTime, line.Text.Length * 0.2f) 
