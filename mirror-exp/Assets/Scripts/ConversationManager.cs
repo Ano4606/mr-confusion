@@ -14,7 +14,7 @@ public class ConversationManager : MonoBehaviour
     {
         public int Line;
         public string Speaker;
-        public string Word;
+        public string Text;
         public string AudioFile;
     }
 
@@ -31,7 +31,8 @@ public class ConversationManager : MonoBehaviour
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
     public AudioSource AudioAvatar;
-
+    public AudioSource AudioParticipant;
+    
     [Header("Avatar Control")]
     public CharacterRetargeter retargeter;
     public Animator selfAvatarAnimator;
@@ -136,7 +137,7 @@ public class ConversationManager : MonoBehaviour
             {
                 Line = lineNumber,
                 Speaker = values[3],
-                Word = values[4],
+                Text = values[4],
                 AudioFile = values[5]
             });
         }
@@ -190,6 +191,9 @@ public class ConversationManager : MonoBehaviour
                 sourceToUse = AudioAvatar;
                 displayText = "...";
 
+                if (avatarLipsync != null)
+                    avatarLipsync.audioSource = AudioAvatar;
+
                 if (retargeter != null)
                     retargeter.enabled = true;
 
@@ -201,12 +205,13 @@ public class ConversationManager : MonoBehaviour
             }
             else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
-                sourceToUse = AudioAvatar;
-                displayText = $"{line.Speaker}: {line.Word}";
+                sourceToUse = AudioParticipant;
+                displayText = $"{line.Speaker}: {line.Text}";
+
             }
             else
             {
-                displayText = $"{line.Speaker}: {line.Word}";
+                displayText = $"{line.Speaker}: {line.Text}";
             }
 
             if (lineText != null)
@@ -215,10 +220,15 @@ public class ConversationManager : MonoBehaviour
             float waitTime = 0f;
 
             if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
+            
             {
+                if (lineText != null)
+                    lineText.text = displayText; // ← affiche le texte AVANT de parler
+
                 yield return StartCoroutine(HandlePlayerSpeaking(sourceToUse, line));
                 continue;
             }
+
 
             if (sourceToUse != null && !string.IsNullOrEmpty(line.AudioFile) && 
                 !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
@@ -237,7 +247,7 @@ public class ConversationManager : MonoBehaviour
             }
 
             if (waitTime <= 0f)
-                waitTime = Mathf.Max(2f, line.Word.Length * 0.2f);
+                waitTime = Mathf.Max(2f, line.Text.Length * 0.2f);
 
             yield return new WaitForSeconds(waitTime);
 
@@ -253,35 +263,43 @@ public class ConversationManager : MonoBehaviour
 
     IEnumerator HandlePlayerSpeaking(AudioSource source, ConversationLine line)
     {
-        if (source != null && Microphone.devices.Length > 0)
+    if (source != null && Microphone.devices.Length > 0)
+    {
+        string micName = Microphone.devices[0];
+        float originalVolume = source.volume;
+        bool originalMute = source.mute;
+
+        source.mute = true;
+        AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
+        source.clip = micClip;
+
+        while (!(Microphone.GetPosition(micName) > 0))
+            yield return null;
+
+        source.Play();
+
+        // ← Assigner le lipsync ICI, une fois que la source joue réellement
+        if (avatarLipsync != null)
         {
-            string micName = Microphone.devices[0];
-            float originalVolume = source.volume;
-            bool originalMute = source.mute;
-
-            source.mute = true;
-            AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
-            source.clip = micClip;
-
-            while (!(Microphone.GetPosition(micName) > 0))
-                yield return null;
-
-            source.Play();
-
-            float duration = useTextBasedDuration 
-                ? Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f) 
-                : playerSpeakingTime;
-
-            yield return new WaitForSeconds(duration);
-
-            Microphone.End(micName);
-            source.Stop();
-            source.volume = originalVolume;
-            source.mute = originalMute;
+            avatarLipsync.audioSource = source;
+            avatarLipsync.enabled = false;
+            avatarLipsync.enabled = true;
         }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-        }
+
+        float duration = useTextBasedDuration 
+            ? Mathf.Min(playerSpeakingTime, line.Text.Length * 0.2f) 
+            : playerSpeakingTime;
+
+        yield return new WaitForSeconds(duration);
+
+        Microphone.End(micName);
+        source.Stop();
+        source.volume = originalVolume;
+        source.mute = originalMute;
+    }
+    else
+    {
+        yield return new WaitForSeconds(2f);
+    }
     }
 }
