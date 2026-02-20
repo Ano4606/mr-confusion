@@ -262,29 +262,20 @@ public class ConversationManager : MonoBehaviour
     }
 
     IEnumerator HandlePlayerSpeaking(AudioSource source, ConversationLine line)
-    {
-    if (source != null && Microphone.devices.Length > 0)
+{
+    if (Microphone.devices.Length > 0)
     {
         string micName = Microphone.devices[0];
-        float originalVolume = source.volume;
-        bool originalMute = source.mute;
 
-        source.mute = true;
         AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
-        source.clip = micClip;
 
         while (!(Microphone.GetPosition(micName) > 0))
             yield return null;
 
-        source.Play();
-
-        // ← Assigner le lipsync ICI, une fois que la source joue réellement
-        if (avatarLipsync != null)
-        {
-            avatarLipsync.audioSource = source;
-            avatarLipsync.enabled = false;
-            avatarLipsync.enabled = true;
-        }
+        // Use AudioAvatar directly so lipsync source never changes
+        AudioAvatar.clip = micClip;
+        AudioAvatar.mute = false; // mute so the player doesn't hear themselves
+        AudioAvatar.Play();
 
         float duration = useTextBasedDuration 
             ? Mathf.Min(playerSpeakingTime, line.Text.Length * 0.2f) 
@@ -293,13 +284,13 @@ public class ConversationManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         Microphone.End(micName);
-        source.Stop();
-        source.volume = originalVolume;
-        source.mute = originalMute;
+        AudioAvatar.Stop();
+        AudioAvatar.mute = false;
+        AudioAvatar.clip = null;
     }
     else
     {
         yield return new WaitForSeconds(2f);
     }
-    }
+}
 }
