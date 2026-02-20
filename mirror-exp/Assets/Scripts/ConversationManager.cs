@@ -38,7 +38,6 @@ public class ConversationManager : MonoBehaviour
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
     public AudioSource AudioAvatar;
-    public AudioSource AudioParticipantMicrophone; // Separate source for participant's mic input
 
     [Header("Avatar Control")]
     public CharacterRetargeter retargeter;
@@ -64,14 +63,8 @@ public class ConversationManager : MonoBehaviour
         retargeter = bindings.retargeter;
         avatarLipsync = bindings.lipSync;
         AudioAvatar = bindings.voiceSource;
-        
-        // Create a separate AudioSource for microphone input
-        //AudioParticipantMicrophone = avatar.AddComponent<AudioSource>();
-        AudioParticipantMicrophone.playOnAwake = false;
-        AudioParticipantMicrophone.loop = false;
-        AudioParticipantMicrophone.spatialBlend = 0f; // 2D audio
-        
-        Debug.Log("[ConversationManager] Participant avatar bound successfully with separate mic AudioSource");
+
+        Debug.Log("[ConversationManager] Participant avatar bound successfully");
     }
 
     public void BindToInterlocutor(GameObject interlocutor)
@@ -118,30 +111,22 @@ public class ConversationManager : MonoBehaviour
             groupNumber = 1;
         }
 
-        // Check microphone availability
-        Debug.Log("=== MICROPHONE DIAGNOSTIC ===");
-        if (Microphone.devices.Length > 0)
+        // DIAGNOSTIC: Check Inspector assignments
+        Debug.Log("========== START TASK DIAGNOSTIC ==========");
+        Debug.Log($"AudioAvatar: {(AudioAvatar != null ? AudioAvatar.gameObject.name : "NULL")}");
+        Debug.Log($"AudioInterlocutor: {(AudioInterlocutor != null ? AudioInterlocutor.gameObject.name : "NULL")}");
+        Debug.Log($"avatarLipsync: {(avatarLipsync != null ? avatarLipsync.gameObject.name : "NULL")}");
+        Debug.Log($"interlocutorLipsync: {(interlocutorLipsync != null ? interlocutorLipsync.gameObject.name : "NULL")}");
+        
+        if (AudioAvatar != null)
         {
-            Debug.Log($"[Microphone] {Microphone.devices.Length} device(s) detected:");
-            for (int i = 0; i < Microphone.devices.Length; i++)
-            {
-                Debug.Log($"[Microphone] Device {i}: {Microphone.devices[i]}");
-            }
-            
-            if (lineText != null)
-            {
-                lineText.text = $"Microphone detected: {Microphone.devices[0]}";
-            }
+            Debug.Log($"AudioAvatar - Volume: {AudioAvatar.volume}, Mute: {AudioAvatar.mute}, Enabled: {AudioAvatar.enabled}");
         }
-        else
+        if (AudioInterlocutor != null)
         {
-            Debug.LogError("[Microphone] NO MICROPHONE DETECTED!");
-            if (lineText != null)
-            {
-                lineText.text = "WARNING: No microphone detected!";
-            }
+            Debug.Log($"AudioInterlocutor - Volume: {AudioInterlocutor.volume}, Mute: {AudioInterlocutor.mute}, Enabled: {AudioInterlocutor.enabled}");
         }
-        Debug.Log("============================");
+        Debug.Log("==========================================");
 
         LoadConversation(Participant);
         PreloadAudioClips();
@@ -249,15 +234,11 @@ public class ConversationManager : MonoBehaviour
             string displayText = "";
 
             // Determine speaker
-                ///// I speaker
-
             if (line.Speaker.Equals("I", StringComparison.OrdinalIgnoreCase))
             {
                 sourceToUse = AudioInterlocutor;
                 displayText = "...";
             }
-                ///// SA speaker
-
             else if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
             {
                 sourceToUse = AudioAvatar;
@@ -272,8 +253,6 @@ public class ConversationManager : MonoBehaviour
                     selfAvatarAnimator.Update(0f);
                 }
             }
-                ///// SA speaker
-
             else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
                 sourceToUse = AudioAvatar;
@@ -290,76 +269,35 @@ public class ConversationManager : MonoBehaviour
             // --- MICROPHONE MODE (Player speaking) ---
             if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
-
-                if (AudioParticipantMicrophone != null && Microphone.devices.Length > 0)
+                if (sourceToUse != null && Microphone.devices.Length > 0)
                 {
                     string micName = Microphone.devices[0];
-                    Debug.Log($"[Microphone] Starting recording from: {micName}");
+                    float originalVolume = sourceToUse.volume;
+                    bool originalMute = sourceToUse.mute;
 
-                    // Start microphone recording
+                    sourceToUse.mute = true;
+
                     AudioClip micClip = Microphone.Start(micName, true, 20, 44100);
-                    
-                    // Wait for microphone to start
-                    int timeout = 0;
-                    while (Microphone.GetPosition(micName) <= 0 && timeout < 100)
-                    {
-                        timeout++;
-                        yield return new WaitForSeconds(0.01f);
-                    }
+                    sourceToUse.clip = micClip;
 
-                    if (timeout >= 100)
-                    {
-                        Debug.LogError("[Microphone] Failed to start!");
-                        if (lineText != null)
-                        {
-                            lineText.text = "⚠️ Microphone failed to start!";
-                        }
-                        Microphone.End(micName);
-                        yield return new WaitForSeconds(2f);
-                        continue;
-                    }
+                    while (!(Microphone.GetPosition(micName) > 0))
+                        yield return null;
 
-                    Debug.Log("[Microphone] Recording started");
+                    sourceToUse.Play();
 
-                    // Assign microphone clip to the SEPARATE microphone AudioSource
-                    AudioParticipantMicrophone.clip = micClip;
-                    AudioParticipantMicrophone.loop = true;
-                    AudioParticipantMicrophone.mute = true; // Mute so user doesn't hear themselves
-                    AudioParticipantMicrophone.Play();
-                    
-                    // Temporarily switch OVRLipSync to use the microphone AudioSource
-                    if (avatarLipsync != null)
-                    {
-                        avatarLipsync.audioSource = AudioParticipantMicrophone;
-                        Debug.Log("[LipSync] Switched to microphone AudioSource");
-                    }
-
-                    // Calculate duration
                     float duration = useTextBasedDuration 
                         ? Mathf.Min(playerSpeakingTime, line.Word.Length * 0.2f) 
                         : playerSpeakingTime;
 
-                    // Wait for speaking duration
                     yield return new WaitForSeconds(duration);
 
-                    // Stop microphone and audio source
                     Microphone.End(micName);
-                    AudioParticipantMicrophone.Stop();
-                    AudioParticipantMicrophone.mute = false;
-                    AudioParticipantMicrophone.loop = false;
-                    
-                    // Switch OVRLipSync back to the main AudioSource
-                    if (avatarLipsync != null)
-                    {
-                        avatarLipsync.audioSource = AudioAvatar;
-                        Debug.Log("[LipSync] Switched back to main AudioSource");
-                    }
-                    
-                    Debug.Log("[Microphone] Recording ended");
+                    sourceToUse.Stop();
+                    sourceToUse.volume = originalVolume;
+                    sourceToUse.mute = originalMute;
                 }
                 else
                 {
-                    Debug.LogWarning("[Microphone] No microphone detected or AudioSource is null!");
                     yield return new WaitForSeconds(2f);
                 }
                 continue;
@@ -370,6 +308,7 @@ public class ConversationManager : MonoBehaviour
                 !line.AudioFile.Equals("NA", StringComparison.OrdinalIgnoreCase))
             {
                 string clipKey = Path.GetFileNameWithoutExtension(line.AudioFile.Trim());
+                Debug.Log($"[Audio] Speaker: {line.Speaker}, Looking for clip: '{clipKey}'");
 
                 if (!clipCache.TryGetValue(clipKey, out AudioClip clip))
                 {
@@ -379,13 +318,22 @@ public class ConversationManager : MonoBehaviour
 
                 if (clip != null)
                 {
+                    Debug.Log($"[Audio] Found clip: {clip.name}, Length: {clip.length}s");
+                    Debug.Log($"[Audio] Playing on: {sourceToUse.gameObject.name}, Volume: {sourceToUse.volume}, Mute: {sourceToUse.mute}");
+                    
                     sourceToUse.clip = clip;
                     sourceToUse.Play();
+                    
+                    // Verify it's actually playing
+                    yield return new WaitForSeconds(0.1f);
+                    Debug.Log($"[Audio] Is playing: {sourceToUse.isPlaying}, Time: {sourceToUse.time}");
+                    
                     waitTime = clip.length;
                 }
                 else
                 {
                     Debug.LogWarning($"[Audio] Clip not found: {clipKey}");
+                    Debug.Log($"[Audio] Available clips: {string.Join(", ", clipCache.Keys)}");
                 }
             }
 
