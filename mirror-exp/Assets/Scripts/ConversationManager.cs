@@ -348,7 +348,7 @@ public class ConversationManager : MonoBehaviour
             }
         }
 
-        lineText.text = "Conversation terminée !";
+        lineText.text = "Conversation terminée ";
         Debug.Log("Conversation complete!");
         OnConversationFinished?.Invoke();
     }
