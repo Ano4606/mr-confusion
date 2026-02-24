@@ -59,8 +59,8 @@ public class DynamicEyeBlinker : MonoBehaviour
     public float saccadeInterval         = 2.5f;
     public float saccadeIntervalVariance = 1.5f;
     public float saccadeSpeed            = 12f;
-    public float maxHorizontal           = 8f;   // degrees (MetaPerson max horiz ~25-45)
-    public float maxVertical             = 6f;   // degrees (MetaPerson max vert = 23)
+    public float maxHorizontal           = 15f;   // degrees (MetaPerson max horiz ~25-45)
+    public float maxVertical             = 10f;   // degrees (MetaPerson max vert = 23)
 
     [Header("Eye Movement — Microsaccade")]
     public float microSaccadeStrength = 1.5f;
