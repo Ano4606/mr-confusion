@@ -136,10 +136,12 @@ using UnityEngine;
             }
 
             if (mirror != null) mirror.SetActive(true);
+            if (choosePhase != null) choosePhase.gameObject.SetActive(false);
     
             if (embodimentPhase != null)
             {
                 if (debugText != null) debugText.text = "Step 4: Starting Embodiment";
+                
                 embodimentPhase.gameObject.SetActive(true);
                 embodimentPhase.PlayInstruction();
             }
