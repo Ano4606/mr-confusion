@@ -11754,7 +11754,7 @@ GameObject:
   - component: {fileID: 831437538}
   - component: {fileID: 831437537}
   - component: {fileID: 831437536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: '[BuildingBlock] Real Hands'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
