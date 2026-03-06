@@ -1882,7 +1882,7 @@ MonoBehaviour:
   _reflectionDistance: 100
   _reflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967231
   _normalDirection: 0
   _reflectionScale: 1
 --- !u!1 &170301535177334435
