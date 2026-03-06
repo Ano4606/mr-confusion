@@ -1,274 +1,34 @@
 "Participant","Group","Line","Speaker","Text","AudioFile"
-"P01","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
-"P01","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
-"P01","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
-"P01","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
-"P01","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
-"P01","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
-"P01","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
-"P01","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
-"P01","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
-"P01","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
-"P01","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
-"P01","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
-"P01","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
-"P01","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
-"P01","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
-"P01","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
-"P01","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
-"P01","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
-"P01","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
-"P01","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
-"P01","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
-"P01","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
-"P01","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
-"P01","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
-"P01","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
-"P01","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
-"P01","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
-"P01","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
-"P01","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
-"P01","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
-"P02","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
-"P02","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
-"P02","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
-"P02","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
-"P02","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
-"P02","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
-"P02","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
-"P02","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
-"P02","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
-"P02","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
-"P02","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
-"P02","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
-"P02","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
-"P02","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
-"P02","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
-"P02","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
-"P02","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
-"P02","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
-"P02","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
-"P02","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
-"P02","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
-"P02","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
-"P02","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
-"P02","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
-"P02","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
-"P02","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
-"P02","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
-"P02","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
-"P02","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
-"P02","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
-"P03","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
-"P03","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
-"P03","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
-"P03","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
-"P03","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
-"P03","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
-"P03","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
-"P03","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
-"P03","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
-"P03","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
-"P03","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
-"P03","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
-"P03","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
-"P03","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
-"P03","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
-"P03","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
-"P03","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
-"P03","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
-"P03","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
-"P03","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
-"P03","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
-"P03","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
-"P03","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
-"P03","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
-"P03","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
-"P03","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
-"P03","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
-"P03","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
-"P03","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
-"P03","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"
-"P04","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
-"P04","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
-"P04","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
-"P04","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
-"P04","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
-"P04","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
-"P04","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
-"P04","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
-"P04","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
-"P04","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
-"P04","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
-"P04","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
-"P04","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
-"P04","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
-"P04","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
-"P04","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
-"P04","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
-"P04","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
-"P04","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
-"P04","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
-"P04","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
-"P04","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
-"P04","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
-"P04","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
-"P04","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
-"P04","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
-"P04","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
-"P04","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
-"P04","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
-"P04","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
-"P05","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
-"P05","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
-"P05","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
-"P05","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
-"P05","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
-"P05","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
-"P05","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
-"P05","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
-"P05","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
-"P05","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
-"P05","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
-"P05","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
-"P05","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
-"P05","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
-"P05","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
-"P05","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
-"P05","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
-"P05","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
-"P05","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
-"P05","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
-"P05","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
-"P05","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
-"P05","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
-"P05","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
-"P05","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
-"P05","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
-"P05","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
-"P05","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
-"P05","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
-"P05","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
-"P06","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
-"P06","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
-"P06","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
-"P06","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
-"P06","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
-"P06","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
-"P06","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
-"P06","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
-"P06","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
-"P06","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
-"P06","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
-"P06","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
-"P06","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
-"P06","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
-"P06","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
-"P06","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
-"P06","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
-"P06","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
-"P06","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
-"P06","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
-"P06","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
-"P06","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
-"P06","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
-"P06","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
-"P06","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
-"P06","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
-"P06","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
-"P06","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
-"P06","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
-"P06","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"
-"P07","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
-"P07","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
-"P07","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
-"P07","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
-"P07","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
-"P07","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
-"P07","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
-"P07","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
-"P07","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
-"P07","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
-"P07","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
-"P07","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
-"P07","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
-"P07","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
-"P07","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
-"P07","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
-"P07","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
-"P07","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
-"P07","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
-"P07","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
-"P07","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
-"P07","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
-"P07","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
-"P07","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
-"P07","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
-"P07","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
-"P07","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
-"P07","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
-"P07","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
-"P07","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
-"P08","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
-"P08","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
-"P08","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
-"P08","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
-"P08","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
-"P08","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
-"P08","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
-"P08","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
-"P08","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
-"P08","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
-"P08","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
-"P08","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
-"P08","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
-"P08","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
-"P08","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
-"P08","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
-"P08","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
-"P08","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
-"P08","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
-"P08","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
-"P08","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
-"P08","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
-"P08","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
-"P08","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
-"P08","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
-"P08","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
-"P08","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
-"P08","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
-"P08","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
-"P08","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
-"P09","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
-"P09","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
-"P09","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
-"P09","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
-"P09","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
-"P09","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
-"P09","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
-"P09","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
-"P09","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
-"P09","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
-"P09","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
-"P09","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
-"P09","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
-"P09","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
-"P09","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
-"P09","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
-"P09","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
-"P09","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
-"P09","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
-"P09","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
-"P09","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
-"P09","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
-"P09","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
-"P09","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
-"P09","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
-"P09","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
-"P09","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
-"P09","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
-"P09","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
-"P09","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"
+"P1","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
+"P1","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
+"P1","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
+"P1","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
+"P1","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
+"P1","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
+"P1","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
+"P1","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
+"P1","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
+"P1","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
+"P1","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
+"P1","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
+"P1","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
+"P1","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
+"P1","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
+"P1","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
+"P1","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
+"P1","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
+"P1","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
+"P1","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
+"P1","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
+"P1","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
+"P1","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
+"P1","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
+"P1","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
+"P1","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
+"P1","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
+"P1","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
+"P1","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
+"P1","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
 "P10","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
 "P10","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
 "P10","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
@@ -569,6 +329,36 @@
 "P19","Group2",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
 "P19","Group2",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
 "P19","Group2",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
+"P2","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
+"P2","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
+"P2","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
+"P2","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
+"P2","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
+"P2","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
+"P2","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
+"P2","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
+"P2","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
+"P2","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
+"P2","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
+"P2","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
+"P2","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
+"P2","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
+"P2","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
+"P2","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
+"P2","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
+"P2","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
+"P2","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
+"P2","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
+"P2","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
+"P2","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
+"P2","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
+"P2","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
+"P2","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
+"P2","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
+"P2","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
+"P2","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
+"P2","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
+"P2","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
 "P20","Group2",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
 "P20","Group2",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
 "P20","Group2",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
@@ -869,6 +659,36 @@
 "P29","Group3",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
 "P29","Group3",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
 "P29","Group3",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
+"P3","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
+"P3","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
+"P3","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
+"P3","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
+"P3","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
+"P3","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
+"P3","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
+"P3","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
+"P3","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
+"P3","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
+"P3","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
+"P3","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
+"P3","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
+"P3","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
+"P3","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
+"P3","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
+"P3","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
+"P3","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
+"P3","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
+"P3","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
+"P3","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
+"P3","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
+"P3","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
+"P3","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
+"P3","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
+"P3","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
+"P3","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
+"P3","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
+"P3","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
+"P3","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"
 "P30","Group3",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
 "P30","Group3",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
 "P30","Group3",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
@@ -1079,3 +899,183 @@
 "P36","Group3",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
 "P36","Group3",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
 "P36","Group3",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
+"P4","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
+"P4","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
+"P4","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
+"P4","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
+"P4","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
+"P4","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
+"P4","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
+"P4","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
+"P4","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
+"P4","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
+"P4","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
+"P4","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
+"P4","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
+"P4","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
+"P4","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
+"P4","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
+"P4","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
+"P4","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
+"P4","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
+"P4","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
+"P4","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
+"P4","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
+"P4","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
+"P4","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
+"P4","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
+"P4","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
+"P4","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
+"P4","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
+"P4","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
+"P4","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
+"P5","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
+"P5","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
+"P5","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
+"P5","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
+"P5","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
+"P5","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
+"P5","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
+"P5","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
+"P5","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
+"P5","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
+"P5","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
+"P5","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
+"P5","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
+"P5","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
+"P5","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
+"P5","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
+"P5","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
+"P5","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
+"P5","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
+"P5","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
+"P5","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
+"P5","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
+"P5","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
+"P5","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
+"P5","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
+"P5","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
+"P5","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
+"P5","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
+"P5","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
+"P5","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
+"P6","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
+"P6","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
+"P6","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
+"P6","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
+"P6","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
+"P6","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
+"P6","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
+"P6","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
+"P6","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
+"P6","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
+"P6","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
+"P6","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
+"P6","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
+"P6","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
+"P6","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
+"P6","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
+"P6","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
+"P6","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
+"P6","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
+"P6","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
+"P6","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
+"P6","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
+"P6","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
+"P6","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
+"P6","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
+"P6","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
+"P6","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
+"P6","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
+"P6","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
+"P6","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"
+"P7","Group1",1,"SA","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","SA_1.mp3"
+"P7","Group1",2,"I","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","I_2.mp3"
+"P7","Group1",3,"P","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.",NA
+"P7","Group1",4,"SA","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","SA_4.mp3"
+"P7","Group1",5,"P","And they both promised to fix the roads before next winter... We'll see if that actually happens.",NA
+"P7","Group1",6,"I","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","I_6.mp3"
+"P7","Group1",7,"SA","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","SA_7.mp3"
+"P7","Group1",8,"I","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","I_8.mp3"
+"P7","Group1",9,"P","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.",NA
+"P7","Group1",10,"I","Investors are worried about the new regulations on artificial intelligence tools, apparently.","I_10.mp3"
+"P7","Group1",11,"I","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","I_11.mp3"
+"P7","Group1",12,"P","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.",NA
+"P7","Group1",13,"P","Yes, I read that! Art historians think it might belong to a famous Italian master.",NA
+"P7","Group1",14,"I","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","I_14.mp3"
+"P7","Group1",15,"SA","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","SA_15.mp3"
+"P7","Group1",16,"P","Yes, and they're arriving much earlier than they did only a decade ago.",NA
+"P7","Group1",17,"SA","Scientists are tracking their movements using small satellite tags; it's impressive.","SA_17.mp3"
+"P7","Group1",18,"P","Exactly. Migration patterns are being completely disrupted.",NA
+"P7","Group1",19,"SA","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","SA_19.mp3"
+"P7","Group1",20,"I","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","I_20.mp3"
+"P7","Group1",21,"I","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","I_21.mp3"
+"P7","Group1",22,"SA","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","SA_22.mp3"
+"P7","Group1",23,"P","That's for the best. I hope to see some truly creative stories on the big screen this summer.",NA
+"P7","Group1",24,"P","In the meantime, the national stadium will host the world finals next weekend.",NA
+"P7","Group1",25,"I","I know! Tickets sold out five minutes after they went online. It's crazy.","I_25.mp3"
+"P7","Group1",26,"SA","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","SA_26.mp3"
+"P7","Group1",27,"SA","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","SA_27.mp3"
+"P7","Group1",28,"P","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.",NA
+"P7","Group1",29,"I","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","I_29.mp3"
+"P7","Group1",30,"SA","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","SA_30.mp3"
+"P8","Group1",1,"P","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.",NA
+"P8","Group1",2,"SA","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.","SA_2.mp3"
+"P8","Group1",3,"I","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","I_3.mp3"
+"P8","Group1",4,"P","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.",NA
+"P8","Group1",5,"I","And they both promised to fix the roads before next winter... We'll see if that actually happens.","I_5.mp3"
+"P8","Group1",6,"SA","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.","SA_6.mp3"
+"P8","Group1",7,"P","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.",NA
+"P8","Group1",8,"SA","This mission could really help us better understand the history of our solar system. We're living in an incredible era.","SA_8.mp3"
+"P8","Group1",9,"I","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","I_9.mp3"
+"P8","Group1",10,"SA","Investors are worried about the new regulations on artificial intelligence tools, apparently.","SA_10.mp3"
+"P8","Group1",11,"SA","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.","SA_11.mp3"
+"P8","Group1",12,"I","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","I_12.mp3"
+"P8","Group1",13,"I","Yes, I read that! Art historians think it might belong to a famous Italian master.","I_13.mp3"
+"P8","Group1",14,"SA","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...","SA_14.mp3"
+"P8","Group1",15,"P","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.",NA
+"P8","Group1",16,"I","Yes, and they're arriving much earlier than they did only a decade ago.","I_16.mp3"
+"P8","Group1",17,"P","Scientists are tracking their movements using small satellite tags; it's impressive.",NA
+"P8","Group1",18,"I","Exactly. Migration patterns are being completely disrupted.","I_18.mp3"
+"P8","Group1",19,"P","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.",NA
+"P8","Group1",20,"SA","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...","SA_20.mp3"
+"P8","Group1",21,"SA","Good resolution! Otherwise, did you see that the big film festival announced its official selection?","SA_21.mp3"
+"P8","Group1",22,"P","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.",NA
+"P8","Group1",23,"I","That's for the best. I hope to see some truly creative stories on the big screen this summer.","I_23.mp3"
+"P8","Group1",24,"I","In the meantime, the national stadium will host the world finals next weekend.","I_24.mp3"
+"P8","Group1",25,"SA","I know! Tickets sold out five minutes after they went online. It's crazy.","SA_25.mp3"
+"P8","Group1",26,"P","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.",NA
+"P8","Group1",27,"P","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.",NA
+"P8","Group1",28,"I","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","I_28.mp3"
+"P8","Group1",29,"SA","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.","SA_29.mp3"
+"P8","Group1",30,"P","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.",NA
+"P9","Group1",1,"I","Have you noticed how today's news seems to fly by faster than we can keep up? I feel like I'm constantly chasing information.","I_1.mp3"
+"P9","Group1",2,"P","Absolutely. I listen to a podcast every morning to see what's happened in the world. Otherwise, I feel out of the loop before breakfast is even over.",NA
+"P9","Group1",3,"SA","Right now, local politics is becoming the main headline of the daily paper. It's almost all anyone talks about anymore.","SA_3.mp3"
+"P9","Group1",4,"I","Yes, especially with the two candidates fighting to take the lead in the latest polls. It's a neck-and-neck race.","I_4.mp3"
+"P9","Group1",5,"SA","And they both promised to fix the roads before next winter... We'll see if that actually happens.","SA_5.mp3"
+"P9","Group1",6,"P","Speaking of ambitious promises, did you see the news about space exploration? The new lunar base marks a major milestone.",NA
+"P9","Group1",7,"I","Yes! Astronauts are preparing to live there for at least six consecutive months. It's fascinating.","I_7.mp3"
+"P9","Group1",8,"P","This mission could really help us better understand the history of our solar system. We're living in an incredible era.",NA
+"P9","Group1",9,"SA","Incredible... and a bit unstable too. Tech stocks plummeted suddenly during late afternoon trading.","SA_9.mp3"
+"P9","Group1",10,"P","Investors are worried about the new regulations on artificial intelligence tools, apparently.",NA
+"P9","Group1",11,"P","Economic experts are still saying to stay calm despite the market volatility. Easier said than done.",NA
+"P9","Group1",12,"SA","For sure. Hey, on a completely different note, a rare painting was discovered in a dusty old attic today.","SA_12.mp3"
+"P9","Group1",13,"SA","Yes, I read that! Art historians think it might belong to a famous Italian master.","SA_13.mp3"
+"P9","Group1",14,"P","And the auction house expects a price of several million. It goes to show, you should always rummage through your grandparents' attics...",NA
+"P9","Group1",15,"I","If only! Regarding scientific discoveries, climate change is affecting the migration patterns of many wild birds.","I_15.mp3"
+"P9","Group1",16,"SA","Yes, and they're arriving much earlier than they did only a decade ago.","SA_16.mp3"
+"P9","Group1",17,"I","Scientists are tracking their movements using small satellite tags; it's impressive.","I_17.mp3"
+"P9","Group1",18,"SA","Exactly. Migration patterns are being completely disrupted.","SA_18.mp3"
+"P9","Group1",19,"I","That reminds me of the Ministry of Health's report on sleep. They say most people need seven hours to stay efficient.","I_19.mp3"
+"P9","Group1",20,"P","Yes, and that we should consume less caffeine in the evening to improve rest quality. I should probably stop having espressos after 6 p.m...",NA
+"P9","Group1",21,"P","Good resolution! Otherwise, did you see that the big film festival announced its official selection?",NA
+"P9","Group1",22,"I","Yes, and it's mostly independent directors drawing attention this year, more so than the big studio stars.","I_22.mp3"
+"P9","Group1",23,"SA","That's for the best. I hope to see some truly creative stories on the big screen this summer.","SA_23.mp3"
+"P9","Group1",24,"SA","In the meantime, the national stadium will host the world finals next weekend.","SA_24.mp3"
+"P9","Group1",25,"P","I know! Tickets sold out five minutes after they went online. It's crazy.",NA
+"P9","Group1",26,"I","Fans are coming from every continent to support their favorite teams. The atmosphere is going to be electric.","I_26.mp3"
+"P9","Group1",27,"I","Our city is going to change its face again with all of this. Modern architecture is already transforming the skyline of our beautiful waterfront.","I_27.mp3"
+"P9","Group1",28,"SA","Yes, those new glass towers rising above the old port district... it's impressive, even if I'm a bit nostalgic.","SA_28.mp3"
+"P9","Group1",29,"P","Me too. Maybe that's why I prefer reading a paper newspaper with a good hot coffee.",NA
+"P9","Group1",30,"I","Same here. It feels good to disconnect from the digital world for a moment... especially when the news moves at a hundred miles an hour.","I_30.mp3"

@@ -122,9 +122,10 @@ using UnityEngine;
                     // Bind interlocutor avatar
                     conversationPhase.BindToInterlocutor(avatarManager.ActiveInterlocutorAvatar);
                     
-                    // Set gender and group for conversation audio
+                    // Set participant ID and gender/group for conversation
                     if (participantIDManager != null)
                     {
+                        conversationPhase.SetParticipantID(participantIDManager.ParticipantID);
                         conversationPhase.SetGenderAndGroup(
                             avatarManager.SelectedGender, 
                             participantIDManager.GroupNumber
@@ -147,7 +148,7 @@ using UnityEngine;
             }
         }
 
-        private void HandleParticipantIDConfirmed(string participantID, int groupNumber)
+        private void HandleParticipantIDConfirmed(string participantID, string groupNumber)
         {
             Debug.Log($"ExperimentManager: Using Participant ID '{participantID}' with Group {groupNumber}");
             // Settings are already confirmed, no additional action needed

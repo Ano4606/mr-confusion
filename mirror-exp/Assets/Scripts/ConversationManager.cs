@@ -24,7 +24,7 @@ public class ConversationManager : MonoBehaviour
     public TextMeshProUGUI lineText;
 
     [Header("Settings")]
-    public string Participant = "P01";
+    public string Participant = "";
     public float playerSpeakingTime = 10f;
     public bool useTextBasedDuration = false;
 
@@ -42,7 +42,7 @@ public class ConversationManager : MonoBehaviour
     public OVRLipSyncContext interlocutorLipsync;
 
     private string participantGender;
-    private int groupNumber;
+    private string groupNumber;
     private List<ConversationLine> conversation = new List<ConversationLine>();
     private Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
 
@@ -76,10 +76,21 @@ public class ConversationManager : MonoBehaviour
         }
     }
 
-    public void SetGenderAndGroup(string gender, int group)
+    public void SetGenderAndGroup(string gender, string group)
     {
         participantGender = gender.ToLower();
-        groupNumber = group;
+        
+        // Only set group if it's not empty - otherwise let CSV extraction handle it
+        if (!string.IsNullOrEmpty(group))
+        {
+            groupNumber = group;
+        }
+    }
+    
+    public void SetParticipantID(string participantID)
+    {
+        Participant = participantID;
+        Debug.Log($"ConversationManager: Participant ID set to {participantID}");
     }
 
     public void StartTask()
@@ -87,10 +98,17 @@ public class ConversationManager : MonoBehaviour
         if (string.IsNullOrEmpty(participantGender))
             participantGender = "female";
 
-        if (groupNumber == 0)
-            groupNumber = 1;
-
+        // Load conversation FIRST to extract group number from CSV
         LoadConversation(Participant);
+        
+        // Set default group if still empty after loading
+        if (string.IsNullOrEmpty(groupNumber))
+        {
+            lineText.text = "No group found!";
+            groupNumber = "";
+        }
+
+        // Now preload audio with the correct group number
         PreloadAudioClips();
 
         if (conversation.Count > 0)
@@ -131,6 +149,25 @@ public class ConversationManager : MonoBehaviour
                 values[j] = values[j].Trim().Trim('"');
 
             if (!values[0].Equals(participant, StringComparison.OrdinalIgnoreCase)) continue;
+            
+            // Extract group number from CSV (column 1) on first matching line
+            if (string.IsNullOrEmpty(groupNumber) && values.Length > 1)
+            {
+                // Extract just the number from "Group1", "Group2", etc.
+                string groupValue = values[1];
+                if (groupValue.StartsWith("Group", StringComparison.OrdinalIgnoreCase))
+                {
+                    groupNumber = groupValue.Substring(5); // Extract number after "Group"
+                    Debug.Log($"Group number extracted from CSV for {participant}: {groupNumber}");
+                    
+                    // Update ParticipantIDManager with the group number
+                    if (ParticipantIDManager.Instance != null)
+                    {
+                        ParticipantIDManager.Instance.SetGroupNumber(groupNumber);
+                    }
+                }
+            }
+            
             if (!int.TryParse(values[2], out int lineNumber)) continue;
 
             conversation.Add(new ConversationLine

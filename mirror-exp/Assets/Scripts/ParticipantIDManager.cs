@@ -3,20 +3,19 @@ using UnityEngine;
 
 public class ParticipantIDManager : MonoBehaviour
 {
-    [Header("Inspector Settings")]
-    [Tooltip("Enter participant ID (e.g., P01, P02, P03)")]
-    public string participantID = "P01";
+    [Header("Debug Participant ID and Group")]
+    public string participantID = "";
     
-    [Tooltip("Group number (1-3) - determines which audio folder to use")]
-    [Range(1, 3)]
-    public int groupNumber = 1;
+    public string groupNumber = "";
 
     public static ParticipantIDManager Instance { get; private set; }
     
     public string ParticipantID => participantID;
-    public int GroupNumber => groupNumber;
+    public string GroupNumber => groupNumber;
     
-    public event Action<string, int> OnParticipantIDConfirmed;
+    public event Action<string, string> OnParticipantIDConfirmed;
+    
+    private bool hasConfirmed = false;
 
     void Awake()
     {
@@ -29,45 +28,79 @@ public class ParticipantIDManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        // Validate on awake
-        ValidateSettings();
     }
 
     void Start()
     {
-        // Automatically confirm the inspector settings
-        ConfirmSettings();
+        // Only auto-confirm if participantID is already set in inspector
+        if (!string.IsNullOrEmpty(participantID))
+        {
+            ValidateSettings();
+            ConfirmSettings();
+        }
+        else
+        {
+            Debug.Log("Waiting for participant ID from ParticipantNumberSelector...");
+        }
     }
 
     private void ValidateSettings()
     {
         if (string.IsNullOrEmpty(participantID))
         {
-            Debug.LogWarning("ParticipantID is empty! Using default 'P01'");
-            participantID = "P01";
+            Debug.LogWarning("ParticipantID is empty!");
         }
         
-        if (groupNumber < 1 || groupNumber > 3)
+        if (!string.IsNullOrEmpty(groupNumber))
         {
-            Debug.LogWarning($"Group number {groupNumber} is out of range! Using default 1");
-            groupNumber = 1;
+            if (int.TryParse(groupNumber, out int groupNum))
+            {
+                if (groupNum < 1 || groupNum > 3)
+                {
+                    Debug.LogWarning($"Group number {groupNumber} is out of range (1-3)!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Group number '{groupNumber}' is not a valid number!");
+            }
         }
     }
 
     private void ConfirmSettings()
     {
-        Debug.Log($"Participant ID: {participantID}, Group: {groupNumber}");
-        OnParticipantIDConfirmed?.Invoke(participantID, groupNumber);
+        if (!hasConfirmed)
+        {
+            hasConfirmed = true;
+            Debug.Log($"Participant ID: {participantID}, Group: {groupNumber}");
+            OnParticipantIDConfirmed?.Invoke(participantID, groupNumber);
+        }
     }
 
     // Optional: Call this if you want to update settings at runtime
-    public void UpdateSettings(string newParticipantID, int newGroupNumber)
+    public void UpdateSettings(string newParticipantID, string newGroupNumber)
     {
         participantID = newParticipantID;
-        groupNumber = Mathf.Clamp(newGroupNumber, 1, 3);
+        groupNumber = newGroupNumber;
         
+        hasConfirmed = false;
         Debug.Log($"Settings updated - Participant ID: {participantID}, Group: {groupNumber}");
         OnParticipantIDConfirmed?.Invoke(participantID, groupNumber);
+    }
+    
+    // Set participant ID from ParticipantNumberSelector
+    public void SetParticipantID(string newParticipantID)
+    {
+        participantID = newParticipantID;
+        hasConfirmed = false;
+        Debug.Log($"Participant ID set to: {participantID}, Group: {groupNumber}");
+        ConfirmSettings();
+    }
+    
+    // Set group number from selector or other source
+    public void SetGroupNumber(string newGroupNumber)
+    {
+        groupNumber = newGroupNumber;
+        Debug.Log($"Group number set to: {groupNumber}");
     }
 }
