@@ -7,6 +7,7 @@ public class ParticipantNumberSelector : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject selectorPanel;
+    public GameObject AvatarPanel;
 
     public TextMeshProUGUI displayText;
     public Toggle confirmButton;
@@ -80,6 +81,7 @@ public class ParticipantNumberSelector : MonoBehaviour
     public void Show()
     {
         selectorPanel.SetActive(true);
+        AvatarPanel.SetActive(false);
         Clear();
     }
     
@@ -154,6 +156,8 @@ public class ParticipantNumberSelector : MonoBehaviour
             }
             
             selectorPanel.SetActive(false);
+            AvatarPanel.SetActive(true);
+
         }
     }
 }
