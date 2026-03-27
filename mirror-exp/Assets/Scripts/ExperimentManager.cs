@@ -1,170 +1,120 @@
 using UnityEngine;
 
-    public class ExperimentManager : MonoBehaviour
+public class ExperimentManager : MonoBehaviour
+{
+    [Header("Panels / Phases")]
+    public ParticipantNumberSelector numberSelector;
+    public ChoosePhaseAvatarManager choosePhase;
+    public EmbodimentManager embodimentPhase;
+    public ConversationManager conversationPhase;
+
+    [Header("Global References")]
+    public AvatarManager avatarManager;
+    public ParticipantIDManager participantIDManager;
+    public GameObject mirror;
+
+    [Header("Debug")]
+    public bool debugMode = false;
+    public string debugAvatarName = "participant-black-female";
+    public bool skipEmbodiment = true;
+    public TMPro.TextMeshProUGUI debugText;
+
+    private void Awake()
     {
-        [Header("Debug Mode")]
-        [Tooltip("Skip avatar selection and use debug avatar directly")]
-        public bool debugMode = false;
-        
-        [Tooltip("Avatar to use in debug mode (e.g., participant-black-female)")]
-        public string debugAvatarName = "participant-black-female";
-        
-        [Tooltip("Skip embodiment phase in debug mode")]
-        public bool skipEmbodiment = true;
-        
-        [Header("Phase Managers")]
-        public ParticipantIDManager participantIDManager;
-        public ChoosePhaseAvatarManager choosePhase;
-        public EmbodimentManager embodimentPhase;
-        public ConversationManager conversationPhase;
+        if (numberSelector != null)
+            numberSelector.OnConfirmed += OnParticipantConfirmed;
 
-        [Header("Global References")]
-        public AvatarManager avatarManager;
-        public GameObject mirror;
-        
-        public TMPro.TextMeshProUGUI debugText;
+        if (choosePhase != null)
+            choosePhase.OnAvatarChosen += OnAvatarChosen;
 
-        private void Awake()
+        if (embodimentPhase != null)
+            embodimentPhase.OnEmbodimentFinished += OnEmbodimentFinished;
+    }
+
+    private void OnDestroy()
+    {
+        if (numberSelector != null)
+            numberSelector.OnConfirmed -= OnParticipantConfirmed;
+
+        if (choosePhase != null)
+            choosePhase.OnAvatarChosen -= OnAvatarChosen;
+
+        if (embodimentPhase != null)
+            embodimentPhase.OnEmbodimentFinished -= OnEmbodimentFinished;
+    }
+
+    private void Start()
+    {
+        if (mirror != null) mirror.SetActive(false);
+        if (embodimentPhase != null) embodimentPhase.gameObject.SetActive(false);
+        if (conversationPhase != null) conversationPhase.gameObject.SetActive(false);
+        if (choosePhase != null) choosePhase.gameObject.SetActive(false);
+
+        if (debugMode)
         {
-            // Subscribe to participant ID manager
-            if (participantIDManager != null)
-            {
-                participantIDManager.OnParticipantIDConfirmed += HandleParticipantIDConfirmed;
-            }
-            
-            // Subscribe here to ensure we don't miss the event
-            if (choosePhase != null)
-            {
-                choosePhase.OnAvatarChosen += HandleAvatarChosen;
-            }
-        
-            if (embodimentPhase != null)
-            {
-                embodimentPhase.OnEmbodimentFinished += HandleEmbodimentFinished;
-            }
+            OnAvatarChosen(debugAvatarName);
+            if (skipEmbodiment) OnEmbodimentFinished();
         }
-
-        private void OnDestroy()
+        else
         {
-            // Unsubscribe to prevent memory leaks
-            if (participantIDManager != null)
-            {
-                participantIDManager.OnParticipantIDConfirmed -= HandleParticipantIDConfirmed;
-            }
-            
-            if (choosePhase != null)
-            {
-                choosePhase.OnAvatarChosen -= HandleAvatarChosen;
-            }
-        
-            if (embodimentPhase != null)
-            {
-                embodimentPhase.OnEmbodimentFinished -= HandleEmbodimentFinished;
-            }
-        }
-
-        private void Start()
-        {
-            // Hide all phases except choosing at startup
-            if (mirror != null)
-                mirror.SetActive(false);
-            
-            if (embodimentPhase != null)
-                embodimentPhase.gameObject.SetActive(false);
-            
-            if (conversationPhase != null)
-                conversationPhase.gameObject.SetActive(false);
-
-            // DEBUG MODE: Skip avatar selection
-            if (debugMode)
-            {
-                Debug.Log($"[DEBUG MODE] Using avatar: {debugAvatarName}");
-                StartDebugMode();
-            }
-            else
-            {
-                // Normal mode: Start the avatar selection phase
-                // ParticipantIDManager will auto-confirm its inspector settings
-                if (choosePhase != null)
-                {
-                    choosePhase.Show();
-                }
-            }
-        }
-
-        private void StartDebugMode()
-        {
-            // Simulate avatar selection
-            HandleAvatarChosen(debugAvatarName);
-            
-            // Skip embodiment if requested
-            if (skipEmbodiment)
-            {
-                Debug.Log("[DEBUG MODE] Skipping embodiment phase");
-                HandleEmbodimentFinished();
-            }
-        }
-
-        private void HandleAvatarChosen(string avatarName)
-        {
-            if (debugText != null) debugText.text = "Step 1: Event Received for " + avatarName;
-
-            if (avatarManager != null)
-            {
-                avatarManager.SelectParticipant(avatarName);
-                if (debugText != null) debugText.text = "Step 2: Avatar Manager Done";
-        
-                if (conversationPhase != null)
-                {
-                    // Bind participant avatar
-                    conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
-                    
-                    // Bind interlocutor avatar
-                    conversationPhase.BindToInterlocutor(avatarManager.ActiveInterlocutorAvatar);
-                    
-                    // Set participant ID and gender/group for conversation
-                    if (participantIDManager != null)
-                    {
-                        conversationPhase.SetParticipantID(participantIDManager.ParticipantID);
-                        conversationPhase.SetGenderAndGroup(
-                            avatarManager.SelectedGender, 
-                            participantIDManager.GroupNumber
-                        );
-                    }
-                    
-                    if (debugText != null) debugText.text = "Step 3: Conversation Bound";
-                }
-            }
-
-            if (mirror != null) mirror.SetActive(true);
-            if (choosePhase != null) choosePhase.gameObject.SetActive(false);
-    
-            if (embodimentPhase != null)
-            {
-                if (debugText != null) debugText.text = "Step 4: Starting Embodiment";
-                
-                embodimentPhase.gameObject.SetActive(true);
-                embodimentPhase.PlayInstruction();
-            }
-        }
-
-        private void HandleParticipantIDConfirmed(string participantID, string groupNumber)
-        {
-            Debug.Log($"ExperimentManager: Using Participant ID '{participantID}' with Group {groupNumber}");
-            // Settings are already confirmed, no additional action needed
-        }
-
-        private void HandleEmbodimentFinished()
-        {
-            if (embodimentPhase != null) embodimentPhase.gameObject.SetActive(false);
-
-            // Start Conversation
-            if (conversationPhase != null)
-            {
-                conversationPhase.gameObject.SetActive(true);
-                conversationPhase.StartTask();
-            }
+            // Start with participant number panel
+            if (numberSelector != null)
+                numberSelector.gameObject.SetActive(true);
         }
     }
 
+    // Step 1: participant number confirmed → show avatar selection
+    private void OnParticipantConfirmed(string participantID)
+    {
+        Log($"Participant confirmed: {participantID}");
+        if (choosePhase != null) choosePhase.Show();
+    }
 
+    // Step 2: avatar chosen → bind everything, show mirror, start embodiment
+    private void OnAvatarChosen(string avatarName)
+    {
+        Log($"Avatar chosen: {avatarName}");
+
+        if (avatarManager != null)
+        {
+            avatarManager.SelectParticipant(avatarName);
+
+            if (conversationPhase != null)
+            {
+                conversationPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+                conversationPhase.BindToInterlocutor(avatarManager.ActiveInterlocutorAvatar);
+
+                if (participantIDManager != null)
+                {
+                    conversationPhase.SetParticipantID(participantIDManager.ParticipantID);
+                    conversationPhase.SetGenderAndGroup(avatarManager.SelectedGender, participantIDManager.GroupNumber);
+                }
+            }
+        }
+
+        if (mirror != null) mirror.SetActive(true);
+
+        if (embodimentPhase != null)
+        {
+            embodimentPhase.gameObject.SetActive(true);
+            embodimentPhase.PlayInstruction();
+        }
+    }
+
+    // Step 3: embodiment done → start conversation
+    private void OnEmbodimentFinished()
+    {
+        if (embodimentPhase != null) embodimentPhase.gameObject.SetActive(false);
+        if (conversationPhase != null)
+        {
+            conversationPhase.gameObject.SetActive(true);
+            conversationPhase.StartTask();
+        }
+    }
+
+    private void Log(string msg)
+    {
+        Debug.Log($"[ExperimentManager] {msg}");
+        if (debugText != null) debugText.text = msg;
+    }
+}
