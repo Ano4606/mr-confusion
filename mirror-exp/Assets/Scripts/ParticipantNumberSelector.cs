@@ -6,8 +6,8 @@ using TMPro;
 public class ParticipantNumberSelector : MonoBehaviour
 {
     [Header("UI References")]
-    public GameObject selectorPanel;
-    public GameObject AvatarPanel;
+//    public GameObject selectorPanel;
+//    public GameObject AvatarPanel;
 
     public TextMeshProUGUI displayText;
     public Toggle confirmButton;
@@ -78,10 +78,10 @@ public class ParticipantNumberSelector : MonoBehaviour
         UpdateDisplay();
     }
     
-    public void Show()
-    {
-        selectorPanel.SetActive(true);
-        AvatarPanel.SetActive(false);
+   public void Show()
+   {
+ //       selectorPanel.SetActive(true);
+ //       AvatarPanel.SetActive(false);
         Clear();
     }
     
@@ -155,8 +155,8 @@ public class ParticipantNumberSelector : MonoBehaviour
                 ParticipantIDManager.Instance.SetParticipantID(participantID);
             }
             
-            selectorPanel.SetActive(false);
-            AvatarPanel.SetActive(true);
+//            selectorPanel.SetActive(false);
+//            AvatarPanel.SetActive(true);
 
         }
     }
