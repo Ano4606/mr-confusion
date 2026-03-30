@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c51da48408ac4d868e0f1da1eb5027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectMeshObject: {fileID: 1198305867}
+  _effectMeshObject: {fileID: 0}
 --- !u!4 &50916625
 Transform:
   m_ObjectHideFlags: 0
@@ -835,6 +835,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -1929,7 +1933,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &90618233
 Canvas:
   m_ObjectHideFlags: 0
@@ -4150,6 +4154,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -5527,10 +5535,7 @@ PrefabInstance:
       addedObject: {fileID: 241242869}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 241242868}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 241242867}
+      addedObject: {fileID: 241242872}
   m_SourcePrefab: {fileID: 100100000, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
 --- !u!4 &241242863 stripped
 Transform:
@@ -5552,48 +5557,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8617ff90473764817940d3fddf8abfb3, type: 3}
   m_PrefabInstance: {fileID: 241242862}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &241242867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241242866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 241242864}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &241242868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241242866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 241242865}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &241242869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5716,6 +5679,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &241242872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241242866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 241242865}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 241242864}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &241619279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3234770425898726917, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
@@ -5914,84 +5906,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -6065666439576628248, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
   m_PrefabInstance: {fileID: 1841366308}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &262776965
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1543937842}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5630001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.016000032
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-      propertyPath: m_Name
-      value: wall_mirror_08
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
---- !u!4 &262776966 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ddadb0f2f6aa4bafa94a8c75b660a32, type: 3}
-  m_PrefabInstance: {fileID: 262776965}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &264191700
 GameObject:
@@ -6482,10 +6396,7 @@ PrefabInstance:
       addedObject: {fileID: 305775016}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 305775015}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 305775014}
+      addedObject: {fileID: 305775019}
   m_SourcePrefab: {fileID: 100100000, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
 --- !u!4 &305775005 stripped
 Transform:
@@ -6507,48 +6418,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8e00fb63547943d9b44bfaf54ec6a7d, type: 3}
   m_PrefabInstance: {fileID: 305775004}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &305775014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305775008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 305775007}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &305775015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305775008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 305775006}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &305775016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6671,6 +6540,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &305775019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305775008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 305775007}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 305775006}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &307434241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 572617754110402786, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
@@ -7166,10 +7064,7 @@ PrefabInstance:
       addedObject: {fileID: 348739472}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ace22e67bd7214b3693963fc115c0477, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 348739471}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ace22e67bd7214b3693963fc115c0477, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 348739470}
+      addedObject: {fileID: 348739475}
   m_SourcePrefab: {fileID: 100100000, guid: ace22e67bd7214b3693963fc115c0477, type: 3}
 --- !u!4 &348739466 stripped
 Transform:
@@ -7191,48 +7086,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ace22e67bd7214b3693963fc115c0477, type: 3}
   m_PrefabInstance: {fileID: 348739465}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &348739470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348739469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 348739467}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &348739471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348739469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 348739468}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &348739472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7355,6 +7208,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &348739475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348739469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 348739468}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 348739467}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &348872266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6434778373997938463, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
@@ -7516,83 +7398,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -415919170949790895, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
   m_PrefabInstance: {fileID: 1342184396}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &386037734
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1543937842}
-    m_Modifications:
-    - target: {fileID: 2296141232796561049, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: Labels
-      value: 16383
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296141232796561049, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: MeshMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 83c5f3946340c0e4ca684523c367b35a, type: 2}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.489
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.543
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.932
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_Name
-      value: EffectMesh
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
 --- !u!4 &391133776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
@@ -8060,12 +7865,6 @@ PrefabInstance:
       addedObject: {fileID: 408809403}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 408809402}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 408809401}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 408809399}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       insertIndex: -1
@@ -8073,6 +7872,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408809408}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 408809411}
   m_SourcePrefab: {fileID: 100100000, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
 --- !u!4 &408809397 stripped
 Transform:
@@ -8098,48 +7900,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _providedSkeletonType: 1
   _validBodyTrackingDelay: 0.25
---- !u!114 &408809401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408809398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 2010330712}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &408809402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408809398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 955532433}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &408809403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8680,11 +8440,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408809398}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &408809411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408809398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 955532433}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 2010330712}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &410542600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6280950661766918508, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
@@ -9239,16 +9028,13 @@ PrefabInstance:
       addedObject: {fileID: 441007556}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 441007555}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 441007554}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 441007553}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
       insertIndex: -1
       addedObject: {fileID: 441007552}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 441007562}
   m_SourcePrefab: {fileID: 100100000, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
 --- !u!4 &441007474 stripped
 Transform:
@@ -10042,48 +9828,6 @@ MonoBehaviour:
   retargeter: {fileID: 0}
   lipSync: {fileID: 0}
   voiceSource: {fileID: 0}
---- !u!114 &441007554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441007550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 441007548}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &441007555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441007550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1664081715}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &441007556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,11 +9975,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441007550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &441007562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441007550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 441007548}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1664081715}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &456129434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3570864772355295989, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
@@ -11888,10 +11661,7 @@ PrefabInstance:
       addedObject: {fileID: 544338282}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 544338281}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 544338280}
+      addedObject: {fileID: 544338285}
   m_SourcePrefab: {fileID: 100100000, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
 --- !u!4 &544338276 stripped
 Transform:
@@ -11913,48 +11683,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
   m_PrefabInstance: {fileID: 544338275}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &544338280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544338279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 544338277}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &544338281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544338279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 544338278}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &544338282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12077,6 +11805,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &544338285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544338279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 544338278}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 544338277}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &549707215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1070232985009656329, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
@@ -14069,6 +13826,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -1070232985009656329, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
   m_PrefabInstance: {fileID: 1588822396}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &750618156
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2296141232796561049, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: Labels
+      value: 16383
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296141232796561049, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: MeshMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 83c5f3946340c0e4ca684523c367b35a, type: 2}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.489
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_Name
+      value: EffectMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
 --- !u!4 &756312151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -455545341709682875, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
@@ -14220,6 +14054,75 @@ Transform:
   - {fileID: 146259966}
   m_Father: {fileID: 308744395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &805636507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 984354080134106425, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_Name
+      value: MRUK
+      objectReference: {fileID: 0}
+    - target: {fileID: 984354080134106425, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: SceneSettings.DataSource
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.489
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
 --- !u!1 &806977912
 GameObject:
   m_ObjectHideFlags: 0
@@ -14872,6 +14775,10 @@ PrefabInstance:
     - target: {fileID: 4884535193097327989, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
@@ -17091,6 +16998,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -18721,16 +18632,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -5116897903442120805, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
   m_PrefabInstance: {fileID: 1342184396}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1198305867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5456522116536683071, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-  m_PrefabInstance: {fileID: 386037734}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1198305868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5456522116536683058, guid: cee191920b8eb41b0960b1082a393a3e, type: 3}
-  m_PrefabInstance: {fileID: 386037734}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1198932174
 GameObject:
   m_ObjectHideFlags: 0
@@ -19346,10 +19247,7 @@ PrefabInstance:
       addedObject: {fileID: 1245856381}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c49096d04a7461b9ea64fb06228967, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1245856380}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c49096d04a7461b9ea64fb06228967, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1245856379}
+      addedObject: {fileID: 1245856384}
   m_SourcePrefab: {fileID: 100100000, guid: a4c49096d04a7461b9ea64fb06228967, type: 3}
 --- !u!4 &1245856375 stripped
 Transform:
@@ -19371,48 +19269,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c49096d04a7461b9ea64fb06228967, type: 3}
   m_PrefabInstance: {fileID: 1245856374}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1245856379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245856378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1245856376}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &1245856380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245856378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1245856377}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1245856381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19535,6 +19391,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1245856384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245856378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1245856377}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1245856376}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!1 &1245861802
 GameObject:
   m_ObjectHideFlags: 0
@@ -20300,10 +20185,7 @@ PrefabInstance:
       addedObject: {fileID: 1279323532}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bc0570279dd44d0e9d6fd0d91b116cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1279323531}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bc0570279dd44d0e9d6fd0d91b116cb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1279323530}
+      addedObject: {fileID: 1279323535}
   m_SourcePrefab: {fileID: 100100000, guid: 2bc0570279dd44d0e9d6fd0d91b116cb, type: 3}
 --- !u!4 &1279323526 stripped
 Transform:
@@ -20325,48 +20207,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bc0570279dd44d0e9d6fd0d91b116cb, type: 3}
   m_PrefabInstance: {fileID: 1279323525}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1279323530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279323529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1279323527}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &1279323531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279323529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1279323528}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1279323532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20489,6 +20329,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1279323535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279323529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1279323528}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1279323527}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &1279812069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2223233092441017123, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
@@ -22188,16 +22057,13 @@ PrefabInstance:
       addedObject: {fileID: 1342184405}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1342184404}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1342184403}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1342184412}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1342184411}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1342184415}
   m_SourcePrefab: {fileID: 100100000, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
 --- !u!4 &1342184397 stripped
 Transform:
@@ -22219,48 +22085,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
   m_PrefabInstance: {fileID: 1342184396}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1342184403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342184400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1342184399}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &1342184404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342184400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1342184398}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1342184405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22820,6 +22644,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1342184415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342184400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1342184399}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1342184398}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!1 &1349290167
 GameObject:
   m_ObjectHideFlags: 0
@@ -23814,6 +23667,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -25442,10 +25299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 262776966}
   - {fileID: 577502451}
-  - {fileID: 1198305868}
-  - {fileID: 2075825559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545647143
@@ -26269,12 +26123,6 @@ PrefabInstance:
       addedObject: {fileID: 1588822405}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1588822404}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1588822403}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1588822402}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       insertIndex: -1
@@ -26284,7 +26132,7 @@ PrefabInstance:
       addedObject: {fileID: 1588822409}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1588822411}
+      addedObject: {fileID: 1588822413}
   m_SourcePrefab: {fileID: 100100000, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
 --- !u!4 &1588822397 stripped
 Transform:
@@ -26697,48 +26545,6 @@ MonoBehaviour:
     _scaleRange: {x: 0.8, y: 1.2}
   _sourceProcessorContainers: []
   _targetProcessorContainers: []
---- !u!114 &1588822403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588822400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1588822399}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &1588822404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588822400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1588822398}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1588822405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26895,27 +26701,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1588822411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588822400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1588822398}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1588822412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26923,11 +26708,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588822400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1588822413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588822400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1588822399}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1588822398}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &1589870960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9060497430412823467, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
@@ -28418,6 +28232,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -27
       objectReference: {fileID: 0}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -29479,9 +29297,6 @@ PrefabInstance:
       addedObject: {fileID: 1681084698}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1681084697}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1681084696}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       insertIndex: -1
@@ -29491,7 +29306,7 @@ PrefabInstance:
       addedObject: {fileID: 1681084694}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1681084702}
+      addedObject: {fileID: 1681084706}
   m_SourcePrefab: {fileID: 100100000, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
 --- !u!4 &1681084617 stripped
 Transform:
@@ -30285,27 +30100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _providedSkeletonType: 1
   _validBodyTrackingDelay: 0.25
---- !u!114 &1681084697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681084693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1681084691}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1681084698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30446,27 +30240,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1681084702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681084693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1209837497}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1681084704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30474,11 +30247,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681084693}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1681084706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681084693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1681084691}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1209837497}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!4 &1683602366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5590123498362716175, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
@@ -33204,12 +33006,6 @@ PrefabInstance:
       addedObject: {fileID: 1841366317}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1841366316}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1841366315}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1841366314}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       insertIndex: -1
@@ -33217,6 +33013,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1841366321}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1841366324}
   m_SourcePrefab: {fileID: 100100000, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
 --- !u!4 &1841366309 stripped
 Transform:
@@ -33629,48 +33428,6 @@ MonoBehaviour:
     _scaleRange: {x: 0.8, y: 1.2}
   _sourceProcessorContainers: []
   _targetProcessorContainers: []
---- !u!114 &1841366315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841366312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1841366310}
-  visemeToBlendTargets: 1300000009000000080000000c000000060000000f000000050000000b000000100000000a0000000d000000070000000e0000001100000012000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
---- !u!114 &1841366316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841366312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 1841366311}
-  visemeToBlendTargets: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
-  enableVisemeTestKeys: 0
-  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
-  laughterKey: 301
-  laughterBlendTarget: 15
-  laughterThreshold: 0.5
-  laughterMultiplier: 1.5
-  smoothAmount: 70
 --- !u!114 &1841366317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33834,11 +33591,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841366312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1841366324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841366312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07e958362b585644b94b8876cf6fb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - renderer: {fileID: 1841366311}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 4100000037000000360000003a000000340000003d00000033000000390000003e000000380000003b000000350000003c0000003f00000040000000
+    laughterBlendShape: -1
+  - renderer: {fileID: 1841366310}
+    autoMap: 1
+    logMapping: 0
+    visemeToBlendShape: 1200000008000000070000000b000000050000000e000000040000000a0000000f000000090000000c000000060000000d0000001000000011000000
+    laughterBlendShape: -1
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
 --- !u!1 &1847108067
 GameObject:
   m_ObjectHideFlags: 0
@@ -36744,6 +36530,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -37119,80 +36909,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: -2692475052227210105, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
   m_PrefabInstance: {fileID: 408809396}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2075825558
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1543937842}
-    m_Modifications:
-    - target: {fileID: 984354080134106425, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_Name
-      value: MRUK
-      objectReference: {fileID: 0}
-    - target: {fileID: 984354080134106425, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: SceneSettings.DataSource
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.489
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.543
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.932
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
---- !u!4 &2075825559 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8047981335285221976, guid: c2e00db6d2dfa42ac8d821db8d493a44, type: 3}
-  m_PrefabInstance: {fileID: 2075825558}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2077338695 stripped
 Transform:
@@ -38148,6 +37864,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4918426944723663047, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282856578032898388, guid: 5292db714b0f87045a7dfd9be93b1be5, type: 3}
       propertyPath: m_Color.a
       value: 0.039215688
@@ -60082,6 +59802,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1827326474}
   - {fileID: 1287936497}
+  - {fileID: 805636507}
+  - {fileID: 750618156}
   - {fileID: 1543937842}
   - {fileID: 1364169221}
   - {fileID: 1659752431}
