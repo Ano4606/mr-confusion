@@ -62,7 +62,7 @@ public class ParticipantNumberSelector : MonoBehaviour
     {
         if (string.IsNullOrEmpty(currentNumber)) return;
 
-        string participantID = $"P{currentNumber}";
+        string participantID = $"{currentNumber}";
 
         if (ParticipantIDManager.Instance != null)
             ParticipantIDManager.Instance.SetParticipantID(participantID);
