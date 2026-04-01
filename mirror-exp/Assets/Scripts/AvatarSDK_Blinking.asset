@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d460ad534a04c4558834b4ed8e6d2acc, type: 3}
   m_Name: AvatarSDK_Blinking
   m_EditorClassIdentifier: 
-  eyesBlendshapeName:
+  LeftEyeBlendshapeNames:
   - eyeBlinkLeft
+  - eyeBlinkLeft
+  RightEyeBlendshapeNames:
+  - eyeBlinkRight
   - eyeBlinkRight

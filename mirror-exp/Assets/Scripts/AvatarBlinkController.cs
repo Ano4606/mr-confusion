@@ -6,11 +6,15 @@ public class AvatarBlinkController : MonoBehaviour
 {
     [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
     [SerializeField] private SOBlinkBlendShape blendShape;
+
+    [Header("Blink Settings")]
     [SerializeField] private float blinkSpeed = 0.1f;
     [SerializeField] private float minBlinkInterval = 2f;
     [SerializeField] private float maxBlinkInterval = 5f;
 
-    private readonly List<int> blendShapeIndices = new();
+    private List<List<int>> leftIndicesPerRenderer = new();
+    private List<List<int>> rightIndicesPerRenderer = new();
+
     private Coroutine blinkRoutine;
 
     private void Awake()
@@ -21,13 +25,14 @@ public class AvatarBlinkController : MonoBehaviour
 
     private void OnEnable()
     {
-        // In case Awake ran before the mesh was ready (some setups), ensure cache is valid.
         CacheRendererIfNeeded();
-        if (blendShapeIndices.Count == 0) BuildBlendShapeIndexCache();
+
+        if (leftIndicesPerRenderer.Count == 0)
+            BuildBlendShapeIndexCache();
 
         ResetEyes();
 
-        if (blendShapeIndices.Count > 0 && blinkRoutine == null)
+        if (blinkRoutine == null)
             blinkRoutine = StartCoroutine(BlinkRoutine());
     }
 
@@ -39,45 +44,69 @@ public class AvatarBlinkController : MonoBehaviour
             blinkRoutine = null;
         }
 
-        // Prevent getting stuck half-blinked
         ResetEyes();
     }
 
     private void CacheRendererIfNeeded()
     {
-        for(int i = 0; i<skinnedMeshRenderers.Count; i++){
- 			if (skinnedMeshRenderers[i] == null && transform.childCount > 0)
-            	skinnedMeshRenderers[i] = transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
-		}
-       
+        for (int i = 0; i < skinnedMeshRenderers.Count; i++)
+        {
+            if (skinnedMeshRenderers[i] == null && transform.childCount > 0)
+                skinnedMeshRenderers[i] = transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
+        }
     }
 
     private void BuildBlendShapeIndexCache()
     {
-        blendShapeIndices.Clear();
+        leftIndicesPerRenderer.Clear();
+        rightIndicesPerRenderer.Clear();
 
-        if (skinnedMeshRenderers == null || blendShape == null)
-            return;
-
-        foreach (var name in blendShape.EyesBlendshapeName)
+        if (blendShape == null)
         {
-			for(int i = 0; i<skinnedMeshRenderers.Count; i++){
-           		int idx = skinnedMeshRenderers[i].sharedMesh.GetBlendShapeIndex(name);
-            	if (idx == -1) Debug.LogError($"Blend shape '{name}' not found on {skinnedMeshRenderers[i].name}");
-            	else blendShapeIndices.Add(idx);
-			}
+            Debug.LogError("BlendShape ScriptableObject is missing!");
+            return;
+        }
 
+        foreach (var smr in skinnedMeshRenderers)
+        {
+            List<int> leftIndices = new();
+            List<int> rightIndices = new();
+
+            if (smr == null || smr.sharedMesh == null)
+            {
+                leftIndicesPerRenderer.Add(leftIndices);
+                rightIndicesPerRenderer.Add(rightIndices);
+                continue;
+            }
+
+            // LEFT EYE
+            foreach (var name in blendShape.LeftEyeBlendshapeNames)
+            {
+                int idx = smr.sharedMesh.GetBlendShapeIndex(name);
+                if (idx == -1)
+                    Debug.LogWarning($"Left '{name}' not found on {smr.name}");
+                else
+                    leftIndices.Add(idx);
+            }
+
+            // RIGHT EYE
+            foreach (var name in blendShape.RightEyeBlendshapeNames)
+            {
+                int idx = smr.sharedMesh.GetBlendShapeIndex(name);
+                if (idx == -1)
+                    Debug.LogWarning($"Right '{name}' not found on {smr.name}");
+                else
+                    rightIndices.Add(idx);
+            }
+
+            leftIndicesPerRenderer.Add(leftIndices);
+            rightIndicesPerRenderer.Add(rightIndices);
         }
     }
 
     private void ResetEyes()
     {
-		for(int i = 0; i<skinnedMeshRenderers.Count; i++){
-        	if (skinnedMeshRenderers[i] == null) return;
-        	foreach (int idx in blendShapeIndices)
-            	skinnedMeshRenderers[i].SetBlendShapeWeight(idx, 0f);
-		}
-
+        ApplyBlinkWeight(0f);
     }
 
     private IEnumerator BlinkRoutine()
@@ -85,40 +114,52 @@ public class AvatarBlinkController : MonoBehaviour
         while (true)
         {
             float interval = Random.Range(minBlinkInterval, maxBlinkInterval);
-
-            // If you want blinking even when timeScale == 0, use WaitForSecondsRealtime instead.
             yield return new WaitForSeconds(interval);
-
             yield return Blink();
         }
     }
 
     private IEnumerator Blink()
     {
-		for(int i = 0; i<skinnedMeshRenderers.Count; i++){
-       // Close
+        // CLOSE
         float t = 0f;
         while (t < blinkSpeed)
         {
             t += Time.deltaTime;
             float w = Mathf.Lerp(0f, 100f, t / blinkSpeed);
-            foreach (int idx in blendShapeIndices) skinnedMeshRenderers[i].SetBlendShapeWeight(idx, w);
+
+            ApplyBlinkWeight(w);
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
 
-        // Open
+        // OPEN
         t = 0f;
         while (t < blinkSpeed)
         {
             t += Time.deltaTime;
             float w = Mathf.Lerp(100f, 0f, t / blinkSpeed);
-            foreach (int idx in blendShapeIndices) skinnedMeshRenderers[i].SetBlendShapeWeight(idx, w);
+
+            ApplyBlinkWeight(w);
             yield return null;
         }
-		}
+    }
 
+    private void ApplyBlinkWeight(float weight)
+    {
+        for (int i = 0; i < skinnedMeshRenderers.Count; i++)
+        {
+            var smr = skinnedMeshRenderers[i];
+            if (smr == null) continue;
 
+            // LEFT
+            foreach (int idx in leftIndicesPerRenderer[i])
+                smr.SetBlendShapeWeight(idx, weight);
+
+            // RIGHT
+            foreach (int idx in rightIndicesPerRenderer[i])
+                smr.SetBlendShapeWeight(idx, weight);
+        }
     }
 }

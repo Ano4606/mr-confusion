@@ -267,9 +267,9 @@ public class DynamicEyeBlinker : MonoBehaviour
     private void UpdateEyeMovement(AvatarBlinkTarget avatar)
     {
         if (!avatar.IsValid) return;
-        HandleSaccade(avatar);
-        HandleMicroSaccade(avatar);
-        ApplyGaze(avatar);
+        //HandleSaccade(avatar);
+        //HandleMicroSaccade(avatar);
+        //ApplyGaze(avatar);
     }
 
     private void HandleSaccade(AvatarBlinkTarget avatar)
@@ -326,27 +326,27 @@ public class DynamicEyeBlinker : MonoBehaviour
         float lookLeftVal  = Mathf.Clamp(-gaze.x / maxHorizontal * 100f, 0f, 100f);
 
         // Head blendshapes
-        SetBS(avatar.avatarHead, avatar.idx_upL,   upVal);
-        SetBS(avatar.avatarHead, avatar.idx_upR,   upVal);
-        SetBS(avatar.avatarHead, avatar.idx_downL, downVal);
-        SetBS(avatar.avatarHead, avatar.idx_downR, downVal);
-        SetBS(avatar.avatarHead, avatar.idx_outL,  lookLeftVal);   // left eye outer = looking left
-        SetBS(avatar.avatarHead, avatar.idx_outR,  lookRightVal);  // right eye outer = looking right
-        SetBS(avatar.avatarHead, avatar.idx_inL,   lookRightVal);  // left eye inner = looking right
-        SetBS(avatar.avatarHead, avatar.idx_inR,   lookLeftVal);   // right eye inner = looking left
+        //SetBS(avatar.avatarHead, avatar.idx_upL,   upVal);
+        //SetBS(avatar.avatarHead, avatar.idx_upR,   upVal);
+        //SetBS(avatar.avatarHead, avatar.idx_downL, downVal);
+        //SetBS(avatar.avatarHead, avatar.idx_downR, downVal);
+        // SetBS(avatar.avatarHead, avatar.idx_outL,  lookLeftVal);   // left eye outer = looking left
+        // SetBS(avatar.avatarHead, avatar.idx_outR,  lookRightVal);  // right eye outer = looking right
+        // SetBS(avatar.avatarHead, avatar.idx_inL,   lookRightVal);  // left eye inner = looking right
+        // SetBS(avatar.avatarHead, avatar.idx_inR,   lookLeftVal);   // right eye inner = looking left
 
         // Eyelashes blendshapes (mirror exactly)
-        SetBS(avatar.avatarEyelashes, avatar.lash_upL,   upVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_upR,   upVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_downL, downVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_downR, downVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_outL,  lookLeftVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_outR,  lookRightVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_inL,   lookRightVal);
-        SetBS(avatar.avatarEyelashes, avatar.lash_inR,   lookLeftVal);
+        //SetBS(avatar.avatarEyelashes, avatar.lash_upL,   upVal);
+        //SetBS(avatar.avatarEyelashes, avatar.lash_upR,   upVal);
+        //SetBS(avatar.avatarEyelashes, avatar.lash_downL, downVal);
+        //SetBS(avatar.avatarEyelashes, avatar.lash_downR, downVal);
+        // SetBS(avatar.avatarEyelashes, avatar.lash_outL,  lookLeftVal);
+        // SetBS(avatar.avatarEyelashes, avatar.lash_outR,  lookRightVal);
+        // SetBS(avatar.avatarEyelashes, avatar.lash_inL,   lookRightVal);
+        // SetBS(avatar.avatarEyelashes, avatar.lash_inR,   lookLeftVal);
 
-        // ── Eye bone rotation ───────────────────────────────────────────────
-        ApplyEyeBoneRotation(avatar.leftEyeBone,  avatar.rightEyeBone, gaze);
+        // // ── Eye bone rotation ───────────────────────────────────────────────
+       // ApplyEyeBoneRotation(avatar.leftEyeBone,  avatar.rightEyeBone, gaze);
     }
 
     private void ApplyEyeBoneRotation(Transform leftEye, Transform rightEye, Vector2 gaze)
