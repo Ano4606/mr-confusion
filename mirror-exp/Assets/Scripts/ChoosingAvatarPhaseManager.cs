@@ -12,7 +12,7 @@ public class ChoosePhaseAvatarManager : MonoBehaviour
 
     public event Action<string> OnAvatarChosen;
 
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < avatarToggles.Length; i++)
         {
@@ -24,7 +24,8 @@ public class ChoosePhaseAvatarManager : MonoBehaviour
 
     public void Show()
     {
-        (panelToHide != null ? panelToHide : gameObject).SetActive(true);
+        gameObject.SetActive(true);
+        if (panelToHide != null) panelToHide.SetActive(true);
         foreach (var t in avatarToggles)
             t.SetIsOnWithoutNotify(false);
     }
@@ -33,6 +34,7 @@ public class ChoosePhaseAvatarManager : MonoBehaviour
     {
         if (index < 0 || index >= avatarNames.Length) return;
         OnAvatarChosen?.Invoke(avatarNames[index]);
-        (panelToHide != null ? panelToHide : gameObject).SetActive(false);
+        if (panelToHide != null) panelToHide.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

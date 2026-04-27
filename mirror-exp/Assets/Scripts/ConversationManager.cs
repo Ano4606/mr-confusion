@@ -228,21 +228,20 @@ public class ConversationManager : MonoBehaviour
                 sourceToUse = AudioAvatar;
                 displayText = "...";
 
-
-                if (avatarLipsync != null){
+                if (avatarLipsync != null)
+                {
                     avatarLipsync.audioSource = AudioAvatar;
                     avatarLipsync.audioLoopback = true;
-                    }
+                }
 
-
-
+                // Disable retargeter so animation can take over body movement
                 if (retargeter != null)
-                    retargeter.enabled = true;
+                    retargeter.enabled = false;
 
                 if (selfAvatarAnimator != null)
                 {
-                    selfAvatarAnimator.Play("Standing", 0, 0f);
-                    selfAvatarAnimator.Update(0f);
+                    selfAvatarAnimator.enabled = true;
+                    selfAvatarAnimator.Play("participant-talking", 0, 0f);
                 }
             }
             else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
@@ -297,8 +296,15 @@ public class ConversationManager : MonoBehaviour
 
             yield return new WaitForSeconds(waitTime);
 
-            if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase) && retargeter != null)
-                retargeter.enabled = true;
+            if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
+            {
+                // Return body control to the retargeter and go back to idle
+                if (selfAvatarAnimator != null)
+                    selfAvatarAnimator.Play("participant-talking", 0, 0f);
+
+                if (retargeter != null)
+                    retargeter.enabled = true;
+            }
         }
 
         if (lineText != null)

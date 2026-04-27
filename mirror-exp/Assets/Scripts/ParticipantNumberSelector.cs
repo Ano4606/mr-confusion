@@ -22,7 +22,7 @@ public class ParticipantNumberSelector : MonoBehaviour
 
     public event Action<string> OnConfirmed; // fires "P42" etc.
 
-    private string currentNumber = "";
+    private string currentNumber = "02";
 
     void Start()
     {
