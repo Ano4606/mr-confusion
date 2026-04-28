@@ -13,7 +13,7 @@ public class MoveToReferenceAfterDelay : MonoBehaviour
         if (referencePosition != null)
         {
             transform.position = new Vector3(referencePosition.position.x, 0.0f, referencePosition.position.z);
-            //transform.rotation = referencePosition.rotation;
+            transform.rotation = Quaternion.Euler(new Vector3(0, referencePosition.rotation.eulerAngles.y, 0));
         }
         else
         {
