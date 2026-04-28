@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E89E47F0-2884-9671-C012-4A7177BC3DE8}|Oculus.LipSync.csproj|c:\\users\\alexf\\documents\\unityprojects\\mr-confusion\\mirror-exp\\assets\\oculus\\lipsync\\scripts\\ovrlipsynccontextmorphtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E89E47F0-2884-9671-C012-4A7177BC3DE8}|Oculus.LipSync.csproj|solutionrelative:assets\\oculus\\lipsync\\scripts\\ovrlipsynccontextmorphtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|c:\\users\\alexf\\documents\\unityprojects\\mr-confusion\\mirror-exp\\assets\\scripts\\movetoreferenceafterdelay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movetoreferenceafterdelay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\assets\\scripts\\conversationdiagnostic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\conversationdiagnostic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\assets\\scripts\\choosingavatarphasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\choosingavatarphasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\assets\\effectmesh_custom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D8FBF28-5C5C-CBDC-6FA6-F68E013BC769}|Assembly-CSharp.csproj|solutionrelative:assets\\effectmesh_custom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OVRLipSyncContextMorphTarget.cs",
-              "DocumentMoniker": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Oculus\\LipSync\\Scripts\\OVRLipSyncContextMorphTarget.cs",
-              "RelativeDocumentMoniker": "Assets\\Oculus\\LipSync\\Scripts\\OVRLipSyncContextMorphTarget.cs",
-              "ToolTip": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Oculus\\LipSync\\Scripts\\OVRLipSyncContextMorphTarget.cs",
-              "RelativeToolTip": "Assets\\Oculus\\LipSync\\Scripts\\OVRLipSyncContextMorphTarget.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAADgv6YAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ChoosingAvatarPhaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\ChoosingAvatarPhaseManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ChoosingAvatarPhaseManager.cs",
+              "ToolTip": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\ChoosingAvatarPhaseManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ChoosingAvatarPhaseManager.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T14:03:30.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T15:14:46.944Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConversationDiagnostic.cs",
-              "DocumentMoniker": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\ConversationDiagnostic.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ConversationDiagnostic.cs",
-              "ToolTip": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\ConversationDiagnostic.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ConversationDiagnostic.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAswDQAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "EffectMesh_Custom.cs",
+              "DocumentMoniker": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\EffectMesh_Custom.cs",
+              "RelativeDocumentMoniker": "Assets\\EffectMesh_Custom.cs",
+              "ToolTip": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\EffectMesh_Custom.cs",
+              "RelativeToolTip": "Assets\\EffectMesh_Custom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T13:56:20.371Z"
+              "WhenOpened": "2026-04-28T15:13:05.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MoveToReferenceAfterDelay.cs",
+              "DocumentMoniker": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\MoveToReferenceAfterDelay.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MoveToReferenceAfterDelay.cs",
+              "ToolTip": "C:\\Users\\alexf\\Documents\\UnityProjects\\mr-confusion\\mirror-exp\\Assets\\Scripts\\MoveToReferenceAfterDelay.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MoveToReferenceAfterDelay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T14:17:34.137Z",
+              "EditorCaption": ""
             }
           ]
         }
