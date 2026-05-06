@@ -3976,9 +3976,9 @@ MonoBehaviour:
   avatarManager: {fileID: 77169963}
   participantIDManager: {fileID: 1853230909}
   mirror: {fileID: 1543937841}
-  debugMode: 0
-  debugAvatarName: 
-  skipEmbodiment: 0
+  debugMode: 1
+  debugAvatarName: participant-black-female
+  skipEmbodiment: 1
   debugText: {fileID: 0}
 --- !u!4 &175490679
 Transform:
@@ -7945,9 +7945,6 @@ PrefabInstance:
       addedObject: {fileID: 408809409}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 408809410}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 408809404}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccdea6abdcc6246578f6f379046fceff, type: 3}
       insertIndex: -1
@@ -8485,7 +8482,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -8525,18 +8522,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &408809410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408809398}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &408809411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9129,9 +9114,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
       insertIndex: 1
       addedObject: {fileID: 441007558}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 441007560}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a9274e559eb7416a9e02b54187c3926, type: 3}
       insertIndex: -1
       addedObject: {fileID: 441007551}
@@ -9924,7 +9906,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -10086,18 +10068,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &441007560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441007550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &441007562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22352,9 +22322,6 @@ PrefabInstance:
       addedObject: {fileID: 1342184413}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1342184414}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1342184409}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
       insertIndex: -1
@@ -22918,7 +22885,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -22942,18 +22909,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1342184414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342184400}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1342184415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26450,9 +26405,6 @@ PrefabInstance:
       addedObject: {fileID: 1588822410}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1588822412}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1588822406}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}
       insertIndex: -1
@@ -26878,7 +26830,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -27040,18 +26992,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1588822412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588822400}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1588822413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29669,9 +29609,6 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1681084700}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1681084704}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1681084699}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb8fccdc1b994f00a505b0391f41dd2, type: 3}
@@ -30449,7 +30386,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -30625,18 +30562,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1681084704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681084693}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1681084706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33412,9 +33337,6 @@ PrefabInstance:
       addedObject: {fileID: 1841366322}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1841366323}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1841366318}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c94ce020af491db976dacc974c5ba, type: 3}
       insertIndex: -1
@@ -33840,7 +33762,7 @@ MonoBehaviour:
     _retargetingBehavior: 0
     _hideLowerBodyWhenUpperBodyTracking: 0
     _hideLegScale: {x: 0, y: 0, z: 0}
-    _applyScale: 0
+    _applyScale: 1
     _currentScale: 1
     _headScaleFactor: 0.95
     _scaleRange: {x: 0.8, y: 1.2}
@@ -34002,18 +33924,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!114 &1841366323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841366312}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e60a9684ae4cee82d34e0dea73ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1841366324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39444,7 +39354,7 @@ MonoBehaviour:
   _reflectionDistance: 100
   _reflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   _normalDirection: 0
   _reflectionScale: 1
 --- !u!4 &118690056443517288
