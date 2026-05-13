@@ -3040,7 +3040,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a82f833db19204bfc9a8100b8bf1a75a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 275d2e325343d774a97e4c18f6d9c18c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14481,8 +14481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17e906f95bfd7e40a2837438780609a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referencePosition: {fileID: 1778117283}
-  delay: 3
 --- !u!4 &815389128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1735401098737855792, guid: 8ae3dbf4e255844d88309db320191309, type: 3}
@@ -28337,7 +28335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 153129439}
-  instructionClip: {fileID: 8300000, guid: 412cf70cf3edd4f73a7b7f2837ec0809, type: 3}
+  instructionClip: {fileID: 8300000, guid: 275d2e325343d774a97e4c18f6d9c18c, type: 3}
+  lipSyncContext: {fileID: 0}
+  avatarVoiceSource: {fileID: 0}
 --- !u!4 &1662728028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2648842872445173533, guid: f6323985944cb4e23b63c1b4931bf5e6, type: 3}

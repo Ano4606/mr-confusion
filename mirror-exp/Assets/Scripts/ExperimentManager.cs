@@ -97,6 +97,11 @@ public class ExperimentManager : MonoBehaviour
         if (embodimentPhase != null)
         {
             embodimentPhase.gameObject.SetActive(true);
+
+            // Give embodiment phase the selected avatar so it can drive lipsync
+            if (avatarManager != null)
+                embodimentPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+
             embodimentPhase.PlayInstruction();
         }
     }

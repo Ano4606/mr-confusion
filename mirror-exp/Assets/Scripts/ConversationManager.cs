@@ -98,6 +98,17 @@ public class ConversationManager : MonoBehaviour
         if (string.IsNullOrEmpty(participantGender))
             participantGender = "female";
 
+        // Ensure no leftover state from embodiment phase
+        if (AudioAvatar != null)
+        {
+            AudioAvatar.Stop();
+            AudioAvatar.clip  = null;
+            AudioAvatar.loop  = false;
+            AudioAvatar.mute  = false;
+        }
+        if (Microphone.devices.Length > 0)
+            Microphone.End(Microphone.devices[0]);
+
         // Load conversation FIRST to extract group number from CSV
         LoadConversation(Participant);
         
