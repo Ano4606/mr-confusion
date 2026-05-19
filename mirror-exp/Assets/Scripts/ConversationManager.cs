@@ -258,8 +258,7 @@ public class ConversationManager : MonoBehaviour
             else if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
             {
                 sourceToUse = AudioParticipant;
-                displayText = $"{line.Speaker}: {line.Text}";
-
+                displayText = line.Text;
                 if (avatarLipsync != null)
                avatarLipsync.audioLoopback = false;
 
