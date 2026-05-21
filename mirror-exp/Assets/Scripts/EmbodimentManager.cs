@@ -8,11 +8,14 @@ public class EmbodimentManager : MonoBehaviour
     [Tooltip("A GameObject with an AudioSource and the instruction AudioClip assigned")]
     public AudioSource audioSource;
     public AudioClip instructionClip;
+    public AudioClip instructionClip2;
 
     [Header("Lipsync / Avatar (set via BindToAvatar)")]
     [Tooltip("Populated automatically from the chosen avatar's AvatarBindings")]
     public OVRLipSyncContext lipSyncContext;
     public AudioSource avatarVoiceSource;
+
+    private GameObject interlocutor;
 
     public event Action OnEmbodimentFinished;
 
@@ -29,6 +32,27 @@ public class EmbodimentManager : MonoBehaviour
 
         lipSyncContext    = bindings.lipSync;
         avatarVoiceSource = bindings.voiceSource;
+    }
+
+    public void BindToInterlocutor(GameObject interlocutorAvatar)
+    {
+        interlocutor = interlocutorAvatar;
+    }
+
+    private void ShowInterlocutor()
+    {
+        if (interlocutor == null) return;
+
+        // Enable every inactive parent in the hierarchy so the interlocutor becomes visible
+        Transform t = interlocutor.transform.parent;
+        while (t != null)
+        {
+            if (!t.gameObject.activeSelf)
+                t.gameObject.SetActive(true);
+            t = t.parent;
+        }
+
+        interlocutor.SetActive(true);
     }
 
     public void PlayInstruction()
@@ -76,11 +100,23 @@ public class EmbodimentManager : MonoBehaviour
             Debug.LogWarning("EmbodimentManager: No mic or avatar bindings — lipsync skipped.");
         }
 
-        // --- Play the instruction clip ---
+        // --- Play the first instruction clip ---
         audioSource.clip = instructionClip;
         audioSource.Play();
 
         yield return new WaitWhile(() => audioSource.isPlaying);
+
+        // --- Play the second instruction clip and show the interlocutor ---
+        if (instructionClip2 != null)
+        {
+            if (interlocutor != null)
+                ShowInterlocutor();
+
+            audioSource.clip = instructionClip2;
+            audioSource.Play();
+
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
 
         // --- Stop mic lipsync ---
         if (micName != null)

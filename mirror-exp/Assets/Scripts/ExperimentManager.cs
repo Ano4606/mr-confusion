@@ -100,7 +100,13 @@ public class ExperimentManager : MonoBehaviour
 
             // Give embodiment phase the selected avatar so it can drive lipsync
             if (avatarManager != null)
+            {
                 embodimentPhase.BindToAvatar(avatarManager.ActiveParticipantAvatar);
+                embodimentPhase.BindToInterlocutor(avatarManager.ActiveInterlocutorAvatar);
+
+                // Force avatar to face the mirror before embodiment starts
+                FaceAvatarTowardMirror(avatarManager.ActiveParticipantAvatar);
+            }
 
             embodimentPhase.PlayInstruction();
         }
@@ -112,9 +118,32 @@ public class ExperimentManager : MonoBehaviour
         if (embodimentPhase != null) embodimentPhase.gameObject.SetActive(false);
         if (conversationPhase != null)
         {
+            // Force avatar to face the mirror before conversation starts
+            if (avatarManager != null)
+                FaceAvatarTowardMirror(avatarManager.ActiveParticipantAvatar);
+
             conversationPhase.gameObject.SetActive(true);
             conversationPhase.StartTask();
         }
+    }
+
+    /// <summary>
+    /// Rotates the participant avatar's root transform to face the mirror,
+    /// keeping the Y-axis upright (horizontal rotation only).
+    /// </summary>
+    private void FaceAvatarTowardMirror(GameObject avatar)
+    {
+        if (avatar == null || mirror == null) return;
+
+        // The mirror's forward points out from its surface into the room.
+        // The avatar should face that same direction (toward the mirror surface).
+        Vector3 mirrorForward = mirror.transform.forward;
+        mirrorForward.y = 0f;
+
+        if (mirrorForward.sqrMagnitude < 0.0001f) return;
+
+        avatar.transform.rotation = Quaternion.LookRotation(-mirrorForward.normalized);
+        Log($"Avatar '{avatar.name}' rotated to face mirror.");
     }
 
     private void Log(string msg)
