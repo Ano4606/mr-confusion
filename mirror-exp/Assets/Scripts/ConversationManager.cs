@@ -222,6 +222,37 @@ public class ConversationManager : MonoBehaviour
         return result.ToArray();
     }
 
+    IEnumerator PulseText(float scaleFactor = 1.4f, float duration = 0.4f)
+    {
+        if (lineText == null) yield break;
+
+        RectTransform rt = lineText.GetComponent<RectTransform>();
+        Vector3 originalScale = rt.localScale;
+        Vector3 targetScale = originalScale * scaleFactor;
+
+        float half = duration / 2f;
+
+        // Scale up
+        float t = 0f;
+        while (t < half)
+        {
+            t += Time.deltaTime;
+            rt.localScale = Vector3.Lerp(originalScale, targetScale, t / half);
+            yield return null;
+        }
+
+        // Scale back down
+        t = 0f;
+        while (t < half)
+        {
+            t += Time.deltaTime;
+            rt.localScale = Vector3.Lerp(targetScale, originalScale, t / half);
+            yield return null;
+        }
+
+        rt.localScale = originalScale;
+    }
+
     IEnumerator RunConversation()
     {
         foreach (var line in conversation)
@@ -260,8 +291,7 @@ public class ConversationManager : MonoBehaviour
                 sourceToUse = AudioParticipant;
                 displayText = line.Text;
                 if (avatarLipsync != null)
-               avatarLipsync.audioLoopback = false;
-
+                    avatarLipsync.audioLoopback = false;
             }
             else
             {
@@ -274,14 +304,13 @@ public class ConversationManager : MonoBehaviour
             float waitTime = 0f;
 
             if (line.Speaker.Equals("P", StringComparison.OrdinalIgnoreCase))
-            
             {
                 if (lineText != null)
-                    lineText.text = displayText; // ← affiche le texte AVANT de parler
+                    lineText.text = displayText;
 
+                yield return StartCoroutine(PulseText());
                 yield return StartCoroutine(HandlePlayerSpeaking(sourceToUse, line));
                 continue;
-
             }
 
 
