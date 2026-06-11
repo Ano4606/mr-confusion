@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 
 public class ParticipantIDManager : MonoBehaviour
@@ -74,6 +75,7 @@ public class ParticipantIDManager : MonoBehaviour
             hasConfirmed = true;
             Debug.Log($"Participant ID: {participantID}, Group: {groupNumber}");
             OnParticipantIDConfirmed?.Invoke(participantID, groupNumber);
+            SaveToCSV();
         }
     }
 
@@ -102,5 +104,47 @@ public class ParticipantIDManager : MonoBehaviour
     {
         groupNumber = newGroupNumber;
         Debug.Log($"Group number set to: {groupNumber}");
+    }
+
+    private void SaveToCSV()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        string folder = "/storage/emulated/0/Download";
+        if (!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+#else
+        string folder = Application.persistentDataPath;
+#endif
+        string filePath = Path.Combine(folder, "participants.csv");
+
+        try
+        {
+            bool fileExists = File.Exists(filePath);
+            using (StreamWriter writer = new StreamWriter(filePath, append: true))
+            {
+                if (!fileExists)
+                    writer.WriteLine("ParticipantID,GroupNumber,DateTime");
+
+                string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                writer.WriteLine($"{participantID},{groupNumber},{timestamp}");
+            }
+            Debug.Log($"Saved to CSV: {filePath}");
+        }
+        catch (Exception e)
+        {
+            // Fallback to persistentDataPath if external write fails
+            Debug.LogWarning($"Could not write to {folder}, falling back. Error: {e.Message}");
+            string fallbackPath = Path.Combine(Application.persistentDataPath, "participants.csv");
+            bool exists = File.Exists(fallbackPath);
+            using (StreamWriter writer = new StreamWriter(fallbackPath, append: true))
+            {
+                if (!exists)
+                    writer.WriteLine("ParticipantID,GroupNumber,DateTime");
+
+                string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                writer.WriteLine($"{participantID},{groupNumber},{timestamp}");
+            }
+            Debug.Log($"Saved to fallback CSV: {fallbackPath}");
+        }
     }
 }
