@@ -25,8 +25,9 @@ public class ConversationManager : MonoBehaviour
 
     [Header("Settings")]
     public string Participant = "";
-    public float playerSpeakingTime = 10f;
+    public float playerSpeakingTime = 20f;
     public bool useTextBasedDuration = false;
+    public float timeBetweenSpeakers = 2f;
 
     [Header("Audio")]
     public AudioSource AudioInterlocutor;
@@ -310,6 +311,8 @@ public class ConversationManager : MonoBehaviour
 
                 yield return StartCoroutine(PulseText());
                 yield return StartCoroutine(HandlePlayerSpeaking(sourceToUse, line));
+                if (timeBetweenSpeakers > 0f)
+                    yield return new WaitForSeconds(timeBetweenSpeakers);
                 continue;
             }
 
@@ -334,6 +337,9 @@ public class ConversationManager : MonoBehaviour
                 waitTime = Mathf.Max(2f, line.Text.Length * 0.2f);
 
             yield return new WaitForSeconds(waitTime);
+
+            if (timeBetweenSpeakers > 0f)
+                yield return new WaitForSeconds(timeBetweenSpeakers);
 
             if (line.Speaker.Equals("SA", StringComparison.OrdinalIgnoreCase))
             {
@@ -370,7 +376,7 @@ public class ConversationManager : MonoBehaviour
 
 
         float duration = useTextBasedDuration 
-            ? Mathf.Min(playerSpeakingTime, line.Text.Length * 0.2f) 
+            ? Mathf.Min(playerSpeakingTime, line.Text.Length * 0.4f) 
             : playerSpeakingTime;
 
         yield return new WaitForSeconds(duration);
